@@ -343,6 +343,13 @@ def main():
     data["meta"]["generated_at"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
     data["meta"]["data_until"] = TODAY.strftime("%d.%m.%Y")
 
+    # Merge ručně zadaná LinkedIn Analytics data (li_analytics.json)
+    li_path = os.path.join(HERE, "li_analytics.json")
+    if os.path.exists(li_path):
+        with open(li_path, encoding="utf-8") as fh:
+            data["linkedin_analytics"] = json.load(fh)
+        print(f"  LinkedIn Analytics: načteno {len(data['linkedin_analytics'])} profil(ů) z li_analytics.json")
+
     out = os.path.join(HERE, "data.json")
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=1)

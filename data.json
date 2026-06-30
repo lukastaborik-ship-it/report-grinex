@@ -14,7 +14,7 @@
   "total_published": 139,
   "total_reach_all": 175463,
   "source_file": "Grinex ContentPlan.xlsx",
-  "generated_at": "30.06.2026 16:08",
+  "generated_at": "30.06.2026 16:28",
   "data_until": "30.06.2026"
  },
  "kpis": {
@@ -5229,5 +5229,215 @@
   "8 - Idea": 26,
   "99 - Don't add": 11,
   "—": 14
+ },
+ "linkedin_analytics": {
+  "Richard Jahoda ml.": {
+   "photo": "assets/rjml-photo.jpeg",
+   "tagline": "Partner v GRINEX, Finanční management a účetnictví. 📊 Držitel kvalifikace ACCA.",
+   "period": "1. 1. 2026 – 30. 6. 2026",
+   "content": {
+    "views": 10240,
+    "views_change_pct": 144,
+    "members_reached": 2654
+   },
+   "followers": {
+    "total": 2707,
+    "change_pct": 30
+   },
+   "engagement": {
+    "total": 152,
+    "reactions": 134,
+    "comments": 15,
+    "reshares": 2,
+    "saves": 1,
+    "sends": 0,
+    "link_clicks": 0
+   },
+   "demographics": {
+    "job_title": [
+     {
+      "label": "Daňový konzultant",
+      "pct": 8
+     },
+     {
+      "label": "Finanční ředitel",
+      "pct": 7
+     },
+     {
+      "label": "Účetní a daňový poradce",
+      "pct": 4
+     },
+     {
+      "label": "Manažer pro finance",
+      "pct": 2
+     },
+     {
+      "label": "Výkonný ředitel",
+      "pct": 2
+     },
+     {
+      "label": "Zakladatel",
+      "pct": 2
+     },
+     {
+      "label": "Vlastník",
+      "pct": 2
+     },
+     {
+      "label": "Manažer daňového oddělení",
+      "pct": 2
+     }
+    ],
+    "location": [
+     {
+      "label": "Praha – metropolitní oblast",
+      "pct": 74
+     },
+     {
+      "label": "České Budějovice a okolí",
+      "pct": 2
+     },
+     {
+      "label": "Brno – metropolitní oblast",
+      "pct": 1
+     },
+     {
+      "label": "Karlovy Vary a okolí",
+      "pct": 1
+     },
+     {
+      "label": "Oblast Londýna, Spojené království",
+      "pct": 1
+     },
+     {
+      "label": "Bratislava – metropolitní oblast",
+      "pct": 1
+     }
+    ],
+    "seniority": [
+     {
+      "label": "Služebně starší",
+      "pct": 41
+     },
+     {
+      "label": "Ředitel",
+      "pct": 14
+     },
+     {
+      "label": "Ředitel (CEO, CFO, CTO)",
+      "pct": 12
+     },
+     {
+      "label": "Nováček",
+      "pct": 10
+     },
+     {
+      "label": "Partner",
+      "pct": 6
+     },
+     {
+      "label": "Manažer",
+      "pct": 5
+     },
+     {
+      "label": "Vlastník",
+      "pct": 4
+     },
+     {
+      "label": "Viceprezident",
+      "pct": 3
+     }
+    ],
+    "industry": [
+     {
+      "label": "Účetnictví a daňové poradenství",
+      "pct": 26
+     },
+     {
+      "label": "Finanční služby",
+      "pct": 13
+     },
+     {
+      "label": "Obchodní poradenství a služby",
+      "pct": 6
+     },
+     {
+      "label": "IT služby a IT poradenství",
+      "pct": 5
+     },
+     {
+      "label": "Právní služby",
+      "pct": 4
+     },
+     {
+      "label": "Bankovnictví",
+      "pct": 3
+     },
+     {
+      "label": "Právní praxe",
+      "pct": 2
+     },
+     {
+      "label": "Farmaceutická výroba",
+      "pct": 2
+     }
+    ],
+    "company_size": [
+     {
+      "label": "11–50 zaměstnanců",
+      "pct": 18
+     },
+     {
+      "label": "Více než 10 001 zaměstnanců",
+      "pct": 16
+     },
+     {
+      "label": "51–200 zaměstnanců",
+      "pct": 13
+     },
+     {
+      "label": "1 001–5 000 zaměstnanců",
+      "pct": 11
+     },
+     {
+      "label": "2–10 zaměstnanců",
+      "pct": 9
+     },
+     {
+      "label": "201–500 zaměstnanců",
+      "pct": 8
+     },
+     {
+      "label": "501–1 000 zaměstnanců",
+      "pct": 5
+     },
+     {
+      "label": "5 001–10 000 zaměstnanců",
+      "pct": 3
+     },
+     {
+      "label": "0–1 zaměstnanců",
+      "pct": 2
+     }
+    ]
+   },
+   "top_posts": [
+    {
+     "file": "assets/rjml-post-1.png",
+     "text": "Proč většina firem nepoužívá výkaz #CashFlow přímou metodou? Protože je to v praxi překvapivě těžké.",
+     "views": 2035
+    },
+    {
+     "file": "assets/rjml-post-2.png",
+     "text": "V Grinex se nebojíme ani nestandardních zakázek. Aktuálně pomáháme jedné švýcarské firmě z oblasti logistiky.",
+     "views": 1253
+    },
+    {
+     "file": "assets/rjml-post-3.png",
+     "text": "#AI se řeší všude. V Grinex se na ni ale díváme jinak. Zajímá nás hlavně to, jakou skutečnou přidanou hodnotu přináší.",
+     "views": 1083
+    }
+   ]
+  }
  }
 }

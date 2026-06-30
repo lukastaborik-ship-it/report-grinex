@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grinex na LinkedIn — výkonnostní dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- ======================= SIDEBAR ======================= -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo_white.svg" alt="ON BOARD" />
+      <div class="sub">Grinex report</div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar__foot" id="foot"></div>
+  </aside>
+
+  <!-- ======================= MAIN ======================= -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar__title">
+        <h1 id="secTitle">Přehled</h1>
+        <div class="sec-sub" id="secSub"></div>
+      </div>
+      <div class="filters">
+        <div class="filtergroup" id="yearWrap">
+          <span>Období</span>
+          <div class="segmented" id="yearSeg"></div>
+        </div>
+        <div class="filtergroup" id="personWrap">
+          <span>Profil</span>
+          <div class="segmented" id="personSeg"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- 1. PŘEHLED -->
+      <section class="screen is-active" id="s-overview">
+        <div class="grid grid--kpi" id="kpiGrid"></div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Vývoj dosahu po měsících</div>
+            <div class="card__hint" id="ovChartHint"></div></div>
+          <div class="chart-wrap"><canvas id="ovMonthly"></canvas></div>
+        </div>
+      </section>
+
+      <!-- 2. DOSAH V ČASE -->
+      <section class="screen" id="s-reach">
+        <div id="reachSummary" class="reach-summary"></div>
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__head"><div class="card__title">Dosah po měsících</div></div>
+            <div class="chart-wrap"><canvas id="reachMonthly"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div class="card__title">Kumulativně za rok</div>
+              <div class="card__hint">Kolik jsme dohromady přinesli</div></div>
+            <div class="chart-wrap"><canvas id="reachCumulative"></canvas></div>
+          </div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Podíl autorů po měsících</div>
+            <div class="card__hint">Skládaný graf — kdo přinesl jakou část dosahu</div></div>
+          <div class="chart-wrap"><canvas id="reachStacked"></canvas></div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Srovnání let</div></div>
+          <div class="chart-wrap short"><canvas id="reachYearly"></canvas></div>
+        </div>
+      </section>
+
+      <!-- 3. NEJLEPŠÍ ČAS -->
+      <section class="screen" id="s-timing">
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__head"><div class="card__title">Nejlepší den v týdnu</div>
+              <div class="card__hint">průměrný dosah / příspěvek</div></div>
+            <div class="chart-wrap"><canvas id="timeDay"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div class="card__title">Nejlepší hodina</div>
+              <div class="card__hint">průměrný dosah / příspěvek</div></div>
+            <div class="chart-wrap"><canvas id="timeHour"></canvas></div>
+          </div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Teplotní mapa — den × hodina</div>
+            <div class="card__hint">tmavší = vyšší průměrný dosah</div></div>
+          <div id="heatmap"></div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Sezónnost — nejsilnější měsíce</div>
+            <div class="card__hint">průměrný dosah / příspěvek</div></div>
+          <div class="chart-wrap short"><canvas id="timeMonth"></canvas></div>
+        </div>
+        <div class="note" id="timeNote"></div>
+      </section>
+
+      <!-- 4. RŮST SÍTĚ -->
+      <section class="screen" id="s-network">
+        <div class="subtabs" id="netTabs"></div>
+        <div class="network-summary" id="netSummary"></div>
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__head"><div class="card__title">Sledující v čase</div></div>
+            <div class="chart-wrap"><canvas id="netFollowers"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div class="card__title">Spojení v čase</div></div>
+            <div class="chart-wrap"><canvas id="netConnections"></canvas></div>
+          </div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Přírůstek sledujících po letech</div></div>
+          <div class="chart-wrap short"><canvas id="netYearly"></canvas></div>
+        </div>
+        <div class="note" id="netNote"></div>
+      </section>
+
+      <!-- 5. SROVNÁNÍ PROFILŮ -->
+      <section class="screen" id="s-compare">
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__head"><div class="card__title">Celkový dosah</div></div>
+            <div class="chart-wrap"><canvas id="cmpReach"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div class="card__title">Průměrný dosah / příspěvek</div></div>
+            <div class="chart-wrap"><canvas id="cmpAvg"></canvas></div>
+          </div>
+        </div>
+        <div class="card section-gap">
+          <div class="card__head"><div class="card__title">Srovnávací tabulka</div></div>
+          <table class="tbl" id="cmpTable"></table>
+        </div>
+      </section>
+
+      <!-- 6. TOP PŘÍSPĚVKY -->
+      <section class="screen" id="s-top">
+        <div class="card">
+          <div class="card__head"><div class="card__title">Žebříček nejlepších příspěvků</div>
+            <div class="card__hint" id="topHint">TOP 20 podle dosahu (za celé období)</div></div>
+          <table class="tbl" id="topTable"></table>
+        </div>
+      </section>
+
+      <!-- 7. STAV OBSAHU -->
+      <section class="screen" id="s-pipeline">
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__head"><div class="card__title">Stav příspěvků</div>
+              <div class="card__hint">publikováno vs. rozpracováno</div></div>
+            <div class="chart-wrap"><canvas id="pipeChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div class="card__title">Rozpad podle stavu</div></div>
+            <table class="tbl" id="pipeTable"></table>
+          </div>
+        </div>
+        <div class="note">Tato obrazovka je provozní přehled. Do výkonnostních čísel se počítají pouze publikované příspěvky se skutečně vyplněným dosahem.</div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

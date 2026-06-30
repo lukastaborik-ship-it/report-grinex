@@ -77,5 +77,64 @@
       {"file": "assets/rjml-post-2.png", "text": "V Grinex se nebojíme ani nestandardních zakázek. Aktuálně pomáháme jedné švýcarské firmě z oblasti logistiky.", "views": 1253},
       {"file": "assets/rjml-post-3.png", "text": "#AI se řeší všude. V Grinex se na ni ale díváme jinak. Zajímá nás hlavně to, jakou skutečnou přidanou hodnotu přináší.", "views": 1083}
     ]
+  },
+  "Grinex (firemní)": {
+    "type": "company",
+    "tagline": "Firemní LinkedIn stránka · Účetnictví a daňové poradenství",
+    "period": "1. 1. 2026 – 28. 6. 2026",
+    "content": {
+      "views": 3568,
+      "views_change_pct": 13,
+      "reactions": 44,
+      "reactions_change_pct": -35,
+      "comments": 12,
+      "comments_change_pct": 500,
+      "reshares": 0
+    },
+    "visitors": {
+      "page_views": 423,
+      "page_views_change_pct": 12,
+      "unique": 216,
+      "unique_change_pct": -5,
+      "web": 289,
+      "mobile": 134
+    },
+    "followers": {
+      "total": 743,
+      "new_organic": 184,
+      "new_change_pct": -12
+    },
+    "demographics": {
+      "location": [
+        {"label": "Praha", "pct": 61},
+        {"label": "České Budějovice", "pct": 4},
+        {"label": "Brno", "pct": 2},
+        {"label": "Oblast Londýna", "pct": 1},
+        {"label": "Varšava", "pct": 1},
+        {"label": "Bratislava", "pct": 1},
+        {"label": "Karlovy Vary", "pct": 1},
+        {"label": "Olomouc", "pct": 1}
+      ]
+    },
+    "top_posts": [
+      {
+        "file": "assets/grinex-fi-post-1.png",
+        "text": "Nestandardních zakázek se nebojíme. Zvládneme i takové výzvy, jako je finanční dohled a účetnictví pro zahraniční firmu.",
+        "views": 241,
+        "date": "28. 1. 2026"
+      },
+      {
+        "file": "assets/grinex-fi-post-2.png",
+        "text": "Pokud si chcete dobře a nerušeně užít své peníze za prodej firmy, nebuďte tajnůstkáři.",
+        "views": 185,
+        "date": "23. 1. 2026"
+      },
+      {
+        "file": "assets/grinex-fi-post-3.png",
+        "text": "#BARVYBYZNYSU díl 2: ESOP — téma, které se stále více dostává do zorného úhlu majitelů firem.",
+        "views": 162,
+        "date": "3. 3. 2026"
+      }
+    ]
   }
 }

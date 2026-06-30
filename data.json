@@ -14,7 +14,7 @@
   "total_published": 139,
   "total_reach_all": 175463,
   "source_file": "Grinex ContentPlan.xlsx",
-  "generated_at": "30.06.2026 16:47",
+  "generated_at": "30.06.2026 17:22",
   "data_until": "30.06.2026"
  },
  "kpis": {
@@ -5231,6 +5231,230 @@
   "—": 14
  },
  "linkedin_analytics": {
+  "Richard Jahoda": {
+   "photo": "assets/rjst-photo.jpeg",
+   "tagline": "Managing Partner v GRINEX, Daňové a Finanční poradenství.",
+   "period": "1. 1. 2026 – 30. 6. 2026",
+   "content": {
+    "views": 28457,
+    "views_change_pct": 2,
+    "members_reached": 5536
+   },
+   "followers": {
+    "total": 3542,
+    "change_pct": 50
+   },
+   "engagement": {
+    "total": 708,
+    "reactions": 620,
+    "comments": 63,
+    "reshares": 1,
+    "saves": 21,
+    "sends": 3,
+    "link_clicks": 5
+   },
+   "demographics": {
+    "job_title": [
+     {
+      "label": "Právní zástupce",
+      "pct": 4
+     },
+     {
+      "label": "Výkonný ředitel",
+      "pct": 4
+     },
+     {
+      "label": "Zakladatel",
+      "pct": 3
+     },
+     {
+      "label": "Jednatel",
+      "pct": 3
+     },
+     {
+      "label": "Vlastník",
+      "pct": 2
+     },
+     {
+      "label": "Řídicí partner",
+      "pct": 2
+     },
+     {
+      "label": "Právník",
+      "pct": 2
+     },
+     {
+      "label": "Spoluzakladatel",
+      "pct": 2
+     },
+     {
+      "label": "Daňový konzultant",
+      "pct": 2
+     }
+    ],
+    "location": [
+     {
+      "label": "Praha – metropolitní oblast",
+      "pct": 64
+     },
+     {
+      "label": "Brno – metropolitní oblast",
+      "pct": 3
+     },
+     {
+      "label": "Oblast Londýna, Spojené království",
+      "pct": 1
+     },
+     {
+      "label": "Ostrava – metropolitní oblast",
+      "pct": 1
+     },
+     {
+      "label": "České Budějovice a okolí",
+      "pct": 1
+     },
+     {
+      "label": "Olomouc a okolí",
+      "pct": 1
+     },
+     {
+      "label": "Bratislava – metropolitní oblast",
+      "pct": 1
+     }
+    ],
+    "seniority": [
+     {
+      "label": "Služebně starší",
+      "pct": 43
+     },
+     {
+      "label": "Nováček",
+      "pct": 11
+     },
+     {
+      "label": "Ředitel",
+      "pct": 10
+     },
+     {
+      "label": "Partner",
+      "pct": 10
+     },
+     {
+      "label": "Ředitel (CEO, CFO, CTO)",
+      "pct": 8
+     },
+     {
+      "label": "Vlastník",
+      "pct": 6
+     },
+     {
+      "label": "Viceprezident",
+      "pct": 3
+     },
+     {
+      "label": "Manažer",
+      "pct": 3
+     }
+    ],
+    "industry": [
+     {
+      "label": "Právní služby",
+      "pct": 26
+     },
+     {
+      "label": "Právní praxe",
+      "pct": 12
+     },
+     {
+      "label": "Účetnictví a daňové poradenství",
+      "pct": 11
+     },
+     {
+      "label": "Finanční služby",
+      "pct": 6
+     },
+     {
+      "label": "Stavebnictví",
+      "pct": 5
+     },
+     {
+      "label": "Obchodní poradenství a služby",
+      "pct": 4
+     },
+     {
+      "label": "IT služby a IT poradenství",
+      "pct": 4
+     },
+     {
+      "label": "Reality",
+      "pct": 2
+     },
+     {
+      "label": "Stavební inženýrství",
+      "pct": 1
+     },
+     {
+      "label": "Vývoj softwaru",
+      "pct": 1
+     }
+    ],
+    "company_size": [
+     {
+      "label": "11–50 zaměstnanců",
+      "pct": 24
+     },
+     {
+      "label": "2–10 zaměstnanců",
+      "pct": 17
+     },
+     {
+      "label": "51–200 zaměstnanců",
+      "pct": 14
+     },
+     {
+      "label": "1 001–5 000 zaměstnanců",
+      "pct": 5
+     },
+     {
+      "label": "Více než 10 001 zaměstnanců",
+      "pct": 5
+     },
+     {
+      "label": "201–500 zaměstnanců",
+      "pct": 5
+     },
+     {
+      "label": "501–1 000 zaměstnanců",
+      "pct": 4
+     },
+     {
+      "label": "0–1 zaměstnanců",
+      "pct": 2
+     },
+     {
+      "label": "5 001–10 000 zaměstnanců",
+      "pct": 2
+     }
+    ]
+   },
+   "top_posts": [
+    {
+     "file": "assets/rjst-post-1.png",
+     "text": "Minulý týden jsem měl možnost vést menší seminář pro tým endors | advokátní kancelář. Tématem byl účetní a daňový pohled na přeměny společností.",
+     "views": 2237
+    },
+    {
+     "file": "assets/rjst-post-2.png",
+     "text": "Přátelé, člověk není živ jen prací. Posledních několik dní jsem strávil s Patrikem v Thajsku na prvním kole Světového poháru v paracyklistice v Chiang Mai.",
+     "views": 2048
+    },
+    {
+     "file": "assets/rjst-post-3.png",
+     "text": "Paušální daň = důchodová past? Alena Schillerová se nám ve své nedávné facebookové show svěřila, že paušální daň, toto její dítě, bude využívat v roce 2026 víc než 125 tisíc živnostníků.",
+     "views": 1936
+    }
+   ]
+  },
   "Richard Jahoda ml.": {
    "photo": "assets/rjml-photo.jpeg",
    "tagline": "Partner v GRINEX, Finanční management a účetnictví. 📊 Držitel kvalifikace ACCA.",

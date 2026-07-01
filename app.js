@@ -163,7 +163,8 @@ function renderOverview(){
     const yrs = DATA.meta.years;
     mkChart('ovMonthly',{ type:'bar', data:{ labels:yrs.map(String),
       datasets:[{ label:'Celkový dosah', data:yrs.map(y=>{
-        const a=DATA.yearly[y]||{}; return Object.values(a).reduce((s,v)=>s+v,0); }),
+        const a=DATA.yearly[y]||{};
+        return state.person==='all' ? Object.values(a).reduce((s,v)=>s+v,0) : (a[state.person]||0); }),
         backgroundColor:C.teal, borderRadius:3 }]},
       options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.y)+' zobrazení'}}}, scales:baseScales() }});
   } else {

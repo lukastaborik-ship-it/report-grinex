@@ -1615,6 +1615,19 @@ function renderNext(){
             'Komunikace přes newsletter, osobní zprávu nebo při výroční schůzce'
           ],
           tags: ['Grinex', 'Richard Jahoda']
+        },
+        {
+          num: 13,
+          priority: 'high',
+          title: 'Placená podpora GRINEX Portálu',
+          desc: 'Nový produkt potřebuje vlastní komunikační a reklamní podporu — bez ní se spoléháme jen na organický dosah, který je pomalejší.',
+          bullets: [
+            'Spustit placenou kampaň cílenou na majitele firem a účetní: Google Ads (vyhledávání), LinkedIn Ads (cílení podle profese)',
+            'Remarketing na návštěvníky stránek portálu — připomínat produkt těm, kteří ho viděli, ale nezaregistrovali se',
+            'Testovat formáty: textové reklamy (vyhledávání), bannery (display) a LinkedIn sponsored content',
+            'Nastavit tracking konverzí (registrace, poptávka) pro měřitelný ROI od prvního dne'
+          ],
+          tags: ['ON BOARD', 'Grinex']
         }
       ]
     }
@@ -1657,7 +1670,7 @@ function renderNext(){
     <div class="rec-intro card">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
         <div style="font-family:'Montserrat';font-weight:700;font-size:16px;color:#1c1f22">Strategické kroky pro H2 2026</div>
-        <span class="rec-priority rec-priority--high" style="font-size:10px">12 doporučení</span>
+        <span class="rec-priority rec-priority--high" style="font-size:10px">13 doporučení</span>
       </div>
       <p style="color:#555;font-size:13px;line-height:1.6;margin:0">
         Na základě výsledků z první poloviny roku 2026 a aktuální pozice Grinexu na trhu

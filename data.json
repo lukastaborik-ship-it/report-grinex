@@ -15,7 +15,7 @@
   "total_published": 139,
   "total_reach_all": 175463,
   "source_file": "Grinex ContentPlan.xlsx",
-  "generated_at": "01.07.2026 14:39",
+  "generated_at": "01.07.2026 15:12",
   "data_until": "01.07.2026"
  },
  "kpis": {
@@ -9753,6 +9753,164 @@
     "views": 972,
     "avg_duration": "0:19",
     "avg_pct": 50.1
+   }
+  ]
+ },
+ "podcast_analytics": {
+  "name": "BARVY BYZNYSU",
+  "period": "H1 2026 — 1. 1. 2026 – 30. 6. 2026",
+  "spotify": {
+   "period": "H1 2026 · od začátku roku",
+   "plays": 147,
+   "plays_spotify": 88,
+   "plays_other": 59,
+   "audience": 75,
+   "watch_time_hours": 15.567,
+   "watch_time_label": "15h 34m",
+   "avg_duration_label": "28m 12s",
+   "followers_gained": 6,
+   "top_episodes": [
+    {
+     "title": "Richard Jahoda | Švarcsystém",
+     "listen_time": "8h 36m",
+     "listen_minutes": 516
+    },
+    {
+     "title": "Richard Jahoda | ESOP | část první",
+     "listen_time": "2h 24m",
+     "listen_minutes": 144
+    },
+    {
+     "title": "Richard Jahoda | ESOP | část druhá",
+     "listen_time": "1h 27m",
+     "listen_minutes": 87
+    },
+    {
+     "title": "Richard Jahoda | EET 2.0",
+     "listen_time": "1h 16m",
+     "listen_minutes": 76
+    },
+    {
+     "title": "Richard Jahoda | Daňové Ráje",
+     "listen_time": "1h 7m",
+     "listen_minutes": 67
+    }
+   ],
+   "platforms": [
+    {
+     "name": "Spotify",
+     "pct": 51.8,
+     "color": "#1DB954"
+    },
+    {
+     "name": "Apple Podcasts",
+     "pct": 28.2,
+     "color": "#9933CC"
+    },
+    {
+     "name": "Web Browser",
+     "pct": 18.2,
+     "color": "#0062FF"
+    },
+    {
+     "name": "Jiné",
+     "pct": 1.8,
+     "color": "#aaaaaa"
+    }
+   ],
+   "geography": [
+    {
+     "country": "Česká republika",
+     "flag": "🇨🇿",
+     "pct": 79.1
+    },
+    {
+     "country": "USA",
+     "flag": "🇺🇸",
+     "pct": 8.7
+    },
+    {
+     "country": "Itálie",
+     "flag": "🇮🇹",
+     "pct": 5.2
+    },
+    {
+     "country": "Japonsko",
+     "flag": "🇯🇵",
+     "pct": 3.5
+    },
+    {
+     "country": "Vietnam",
+     "flag": "🇻🇳",
+     "pct": 2.6
+    },
+    {
+     "country": "Irák",
+     "flag": "🇮🇶",
+     "pct": 0.9
+    }
+   ],
+   "age_groups": [
+    {
+     "range": "23–27",
+     "pct": 10.5
+    },
+    {
+     "range": "28–34",
+     "pct": 22.8
+    },
+    {
+     "range": "35–44",
+     "pct": 47.4
+    },
+    {
+     "range": "45–59",
+     "pct": 19.3
+    }
+   ]
+  },
+  "youtube": {
+   "period": "H1 2026",
+   "plays": 546,
+   "watch_time_hours": 58.2,
+   "promo_videos": [
+    {
+     "title": "Nový díl podcastu BARVY BYZNYSU | ŠVARCSYSTÉM #GRINEX",
+     "date": "19. 3. 2026",
+     "views": 17541
+    },
+    {
+     "title": "Druhá epizoda BARVY BYZNYSU je online ‼️",
+     "date": "4. 3. 2026",
+     "views": 1304
+    },
+    {
+     "title": "První epizoda #BARVYBYZNYSU",
+     "date": "25. 2. 2026",
+     "views": 1291
+    },
+    {
+     "title": "Pokračujeme s tématem ESOP! 📝",
+     "date": "2. 3. 2026",
+     "views": 1106
+    },
+    {
+     "title": "První díl #BARVYBYZNYSU je tady!",
+     "date": "25. 2. 2026",
+     "views": 1103
+    }
+   ]
+  },
+  "meta_posts": [
+   {
+    "platform": "Facebook",
+    "title": "Nový díl podcastu BARVY BYZNYSU | ŠVARCSYSTÉM #GRINEX",
+    "date": "19. 3. 2026",
+    "views": 76000,
+    "likes": 120,
+    "comments": 6,
+    "shares": 6,
+    "note": "Organický virální dosah — top FB příspěvek H1 2026"
    }
   ]
  }

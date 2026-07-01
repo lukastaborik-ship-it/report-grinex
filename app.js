@@ -26,6 +26,7 @@ const SECTIONS = [
   { id:'profiles', icon:'8', title:'Profil ambasadora',  sub:'LinkedIn Analytics — data přímo z platformy', person:false, year:false },
   { id:'meta',     icon:'9',  title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
   { id:'youtube',  icon:'10', title:'YouTube',            sub:'Grinex Czech Republic — výkon kanálu',         person:false, year:false },
+  { id:'podcast',  icon:'11', title:'Podcast',            sub:'BARVY BYZNYSU — celkový zásah napříč platformami', person:false, year:false },
 ];
 
 let DATA = null;
@@ -108,7 +109,7 @@ function render(){
 
   ({ overview:renderOverview, reach:renderReach, timing:renderTiming,
      network:renderNetwork, compare:renderCompare, top:renderTop, pipeline:renderPipeline,
-     profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube })[sec.id]();
+     profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube, podcast:renderPodcast })[sec.id]();
 }
 
 const kkey = () => `${state.year}|${state.person}`;
@@ -1052,6 +1053,146 @@ function renderMeta(){
 
   // Note
   $('#metaNote').innerHTML = `💡 <strong>H1 2026 (1. 1.–29. 6. 2026)</strong>: data z Meta Business Suite. <strong>Reels táhnou FB dosah</strong> — 165 949 z 167 244 celkových zobrazení (99 %). Vše organické, žádná placená reklama. IG zobrazení klesla (−40 %), ale dosah +715 % ukazuje průnik mimo bublinu sledujících. Září a Říjen 2025: žádné příspěvky na FB ani IG.`;
+}
+
+// ---- 11. PODCAST ----
+function renderPodcast(){
+  const p = DATA.podcast_analytics;
+  if(!p){ $('#s-podcast').innerHTML='<div class="note">Žádná podcast data.</div>'; return; }
+
+  const SP   = '#1DB954'; // Spotify green
+  const YT   = '#FF0000'; // YouTube red
+  const FB   = '#1877F2'; // Facebook blue
+  const APOD = '#9933CC'; // Apple Podcasts purple
+
+  const sp = p.spotify;
+  const yt = p.youtube;
+
+  // Součty přes platformy
+  const totalPlays     = sp.plays + yt.plays;
+  const totalWatchH    = sp.watch_time_hours + yt.watch_time_hours;
+  const totalWatchLbl  = `${Math.floor(totalWatchH)}h ${Math.round((totalWatchH % 1)*60)}m`;
+  const ytPromoViews   = yt.promo_videos.reduce((s,v)=>s+v.views, 0);
+  const metaViews      = p.meta_posts.reduce((s,v)=>s+v.views, 0);
+
+  // KPI tiles
+  $('#podKpiGrid').innerHTML = [
+    { dark:true, label:'Celková přehrání podcastu', value:fmt(totalPlays), sub:`Spotify ${sp.plays} · YouTube ${yt.plays}` },
+    { label:'Unikátní posluchači', value:fmt(sp.audience), sub:'Spotify · H1 2026' },
+    { label:'Celková doba poslechu', value:totalWatchLbl, sub:`Spotify ${sp.watch_time_label} · YouTube ${yt.watch_time_hours}h` },
+    { label:'Ø délka epizody', value:sp.avg_duration_label, sub:'Spotify · průměrná délka přehrávání' },
+    { label:'Sociální dosah (Meta)', value:fmtK(metaViews), sub:'FB příspěvky o podcastu · organicky' },
+    { label:'YT video dosah (promo)', value:fmtK(ytPromoViews), sub:'YouTube klipy o BARVY BYZNYSU' },
+  ].map(t=>`<div class="kpi${t.dark?' kpi--dark':''}">
+    <div class="kpi__label">${t.label}</div>
+    <div class="kpi__value">${t.value}</div>
+    <div class="kpi__sub">${t.sub}</div>
+  </div>`).join('');
+
+  // Chart 1: Platforms donut
+  mkChart('podPlatformChart',{
+    type:'doughnut',
+    data:{
+      labels: sp.platforms.map(x=>x.name),
+      datasets:[{ data: sp.platforms.map(x=>x.pct), backgroundColor: sp.platforms.map(x=>x.color),
+        borderWidth:2, borderColor:'#fff', hoverOffset:6 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{
+        legend:{ position:'right', labels:{ font:{family:"'Montserrat'",size:11}, padding:12,
+          generateLabels: chart => sp.platforms.map((x,i)=>({
+            text:`${x.name}  ${x.pct} %`,
+            fillStyle:x.color, strokeStyle:x.color, lineWidth:0, index:i })) }},
+        tooltip:{...tip, callbacks:{ label:c=>`${c.label}: ${c.parsed} %` }},
+        datalabels:{ display:false }
+      }
+    }
+  });
+
+  // Chart 2: Top episodes (horizontal bar — listen time in minutes)
+  const eps = sp.top_episodes;
+  mkChart('podEpisodesChart',{
+    type:'bar',
+    data:{
+      labels: eps.map(e=>e.title.replace('Richard Jahoda | ','')),
+      datasets:[{ label:'Doba poslechu (min)', data: eps.map(e=>e.listen_minutes),
+        backgroundColor: SP+'cc', borderRadius:3 }]
+    },
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false},
+        tooltip:{...tip, callbacks:{ label:c=>`${eps[c.dataIndex].listen_time}` }},
+        datalabels:{ display:true, anchor:'end', align:'end',
+          formatter:(_,ctx)=>eps[ctx.dataIndex].listen_time,
+          font:{family:"'Montserrat'",weight:'600',size:10}, color:C.ink }
+      },
+      scales:{ x:{ grid:{color:C.grid}, border:{display:false}, ticks:{callback:v=>v+'min',font:{size:10}} },
+               y:{ grid:{display:false}, ticks:{font:{size:11}} } }
+    }
+  });
+
+  // Chart 3: Age groups
+  mkChart('podAgeChart',{
+    type:'bar',
+    data:{
+      labels: sp.age_groups.map(a=>a.range),
+      datasets:[{ label:'% posluchačů', data: sp.age_groups.map(a=>a.pct),
+        backgroundColor: SP+'cc', borderRadius:3 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false},
+        tooltip:{...tip, callbacks:{label:c=>c.parsed.y+' %'}},
+        datalabels:{ display:true, anchor:'end', align:'end',
+          formatter:v=>v+' %', font:{family:"'Montserrat'",weight:'700',size:11}, color:C.ink }
+      },
+      scales:{ x:{grid:{display:false}}, y:{grid:{color:C.grid},border:{display:false},ticks:{callback:v=>v+'%',font:{size:10}},max:60} }
+    }
+  });
+
+  // Geography table
+  $('#podGeoTable').innerHTML = `<div style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
+    ${sp.geography.map(g=>`<div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px">
+        <span>${g.flag} <strong>${g.country}</strong></span>
+        <span style="font-family:'Montserrat';font-weight:700">${g.pct} %</span>
+      </div>
+      <div style="background:var(--border-default);border-radius:3px;height:6px">
+        <div style="background:${SP};border-radius:3px;height:6px;width:${g.pct}%"></div>
+      </div>
+    </div>`).join('')}
+  </div>`;
+
+  // Social reach: Meta + YT promo
+  const metaPost = p.meta_posts[0];
+  $('#podSocialReach').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+      <div>
+        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${FB};margin-bottom:.75rem">Facebook</div>
+        <table class="tbl" style="font-size:13px">
+          <thead><tr><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">Lajky</th><th class="num">Sdílení</th></tr></thead>
+          <tbody>${p.meta_posts.map(mp=>`<tr>
+            <td>${mp.title}</td><td style="white-space:nowrap;opacity:.6">${mp.date}</td>
+            <td class="num" style="font-weight:700;color:${FB}">${fmtK(mp.views)}</td>
+            <td class="num">${mp.likes}</td><td class="num">${mp.shares}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${YT};margin-bottom:.75rem">YouTube — promo klipy</div>
+        <table class="tbl" style="font-size:13px">
+          <thead><tr><th>Video</th><th>Datum</th><th class="num">Zobrazení</th></tr></thead>
+          <tbody>${yt.promo_videos.map(v=>`<tr>
+            <td>${v.title}</td><td style="white-space:nowrap;opacity:.6">${v.date}</td>
+            <td class="num" style="font-weight:${v.views>5000?'700':'400'};color:${v.views>5000?YT:'inherit'}">${fmtK(v.views)}</td>
+          </tr>`).join('')}</tbody>
+          <tfoot><tr style="font-weight:700;border-top:2px solid var(--border-default)">
+            <td>Celkem</td><td></td><td class="num">${fmtK(ytPromoViews)}</td>
+          </tr></tfoot>
+        </table>
+      </div>
+    </div>`;
+
+  // Note
+  $('#podNote').innerHTML = `💡 <strong>BARVY BYZNYSU · H1 2026</strong>: Celkem ${fmt(totalPlays)} přehrání podcastu napříč platformami (Spotify ${sp.plays} + YouTube ${yt.plays}), ${totalWatchLbl} hodin poslechu. Nejsilnější epizoda: <strong>Švarcsystém</strong> (8h 36m doby poslechu na Spotify). Sociální dosah propagace podcastu: ${fmtK(metaViews)} zobrazení na Facebooku + ${fmtK(ytPromoViews)} na YouTube video klipcích. Jádrové publikum: <strong>35–44 let (47 %)</strong>, převažují muži. Hlavní platformy: Spotify ${sp.platforms[0].pct} %, Apple Podcasts ${sp.platforms[1].pct} %.`;
 }
 
 // ---- 10. YOUTUBE ----

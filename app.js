@@ -1639,21 +1639,26 @@ function renderNext(){
 
   const tagHtml = tags => tags.map(t => `<span class="rec-tag">${t}</span>`).join('');
 
-  const cardHtml = (item, color) => `
-    <div class="rec-card" style="--rec-color:${color}">
-      <div class="rec-card__top">
-        <div class="rec-card__num">${item.num}</div>
-        ${priorityLabel(item.priority)}
+  const CHEVRON = `<svg class="rec-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg>`;
+
+  const itemHtml = (item, color) => `
+    <details class="rec-item" style="--rec-color:${color}">
+      <summary class="rec-item__head">
+        <div class="rec-item__num">${item.num}</div>
+        <div class="rec-item__title">${item.title}</div>
+        <div class="rec-item__badges">
+          ${priorityLabel(item.priority)}
+          ${tagHtml(item.tags)}
+        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="rec-item__body">
+        <p class="rec-item__desc">${item.desc}</p>
+        <ul class="rec-card__bullets">
+          ${item.bullets.map(b=>`<li>${b}</li>`).join('')}
+        </ul>
       </div>
-      <div class="rec-card__title">${item.title}</div>
-      <div class="rec-card__desc">${item.desc}</div>
-      <ul class="rec-card__bullets">
-        ${item.bullets.map(b=>`<li>${b}</li>`).join('')}
-      </ul>
-      <div class="rec-card__footer">
-        ${tagHtml(item.tags)}
-      </div>
-    </div>`;
+    </details>`;
 
   const groupHtml = g => `
     <div class="rec-group">
@@ -1661,8 +1666,8 @@ function renderNext(){
         <span class="rec-group__icon">${g.icon}</span>
         <span class="rec-group__title">${g.title}</span>
       </div>
-      <div class="rec-grid">
-        ${g.items.map(item => cardHtml(item, g.color)).join('')}
+      <div class="rec-list">
+        ${g.items.map(item => itemHtml(item, g.color)).join('')}
       </div>
     </div>`;
 

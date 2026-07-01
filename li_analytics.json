@@ -114,6 +114,16 @@
           "relationships": 25.0,
           "industry_top_pct": 3,
           "network_top_pct": 10
+        },
+        {
+          "date": "1. 7. 2026",
+          "score": 56,
+          "brand": 13.455,
+          "find": 6.9,
+          "engage": 10.7,
+          "relationships": 25.0,
+          "industry_top_pct": 2,
+          "network_top_pct": 7
         }
       ]
     }

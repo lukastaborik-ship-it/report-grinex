@@ -27,7 +27,7 @@ const SECTIONS = [
   { id:'meta',     icon:'9',  title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
   { id:'youtube',  icon:'10', title:'YouTube',            sub:'Grinex Czech Republic — výkon kanálu',         person:false, year:false },
   { id:'podcast',  icon:'11', title:'Podcast',            sub:'BARVY BYZNYSU — celkový zásah napříč platformami', person:false, year:false },
-  { id:'xtwitter', icon:'X',  title:'X (Twitter)',        sub:'Richard Jahoda · @richard_jahoda · H1 2026',        person:false, year:false },
+  { id:'xtwitter', icon:'12', title:'X (Twitter)',        sub:'Richard Jahoda · @richard_jahoda · H1 2026',        person:false, year:false },
   { id:'next',     icon:'13', title:'Doporučení do zbytku roku', sub:'Strategické kroky a témata pro H2 2026',    person:false, year:false },
 ];
 
@@ -1449,57 +1449,41 @@ function renderXTwitter(){
       <div class="kpi__sub">${k.sub}</div>
     </div>`).join('');
 
-  // Bar chart — impressions per thread
-  const labels = threads.map(t => {
-    const parts = t.topic.split(' — ');
-    return parts[0].length > 22 ? parts[0].slice(0,22)+'…' : parts[0];
-  });
-  const values = threads.map(t => t.impressions);
-  const colors = threads.map(t => t.highlight ? '#0062FF' : 'rgba(0,98,255,0.35)');
+  // Tweet cards
+  const tweetCard = (tw) => {
+    const statCls = tw.highlight ? 'x-tweet--best' : '';
+    return `
+      <div class="x-tweet ${statCls}">
+        <div class="x-tweet__body">${tw.text.replace(/\n/g,'<br>')}</div>
+        <div class="x-tweet__stats">
+          <span title="Odpovědi">💬 ${tw.replies}</span>
+          <span title="Retweets">🔁 ${tw.retweets}</span>
+          <span title="Líbí se">❤️ ${tw.likes}</span>
+          <span class="x-tweet__views" title="Zobrazení">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;opacity:.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            ${fmt(tw.views)}
+            ${tw.highlight ? '<span class="x-badge" style="margin-left:6px">Nejlepší</span>' : ''}
+          </span>
+        </div>
+      </div>`;
+  };
 
-  mkChart('xThreadChart','bar',{
-    labels,
-    datasets:[{ label:'Zobrazení (thread)', data:values, backgroundColor:colors,
-      borderRadius:6, borderSkipped:false }]
-  },{
-    plugins:{
-      datalabels:{
-        anchor:'end', align:'top', formatter:v=>fmt(v),
-        font:{family:'Montserrat',weight:'700',size:11},
-        color: ctx => threads[ctx.dataIndex].highlight ? '#0062FF' : '#666'
-      },
-      legend:{display:false},
-      tooltip:{ callbacks:{ label: ctx=>`Zobrazení: ${fmt(ctx.parsed.y)}` } }
-    },
-    ...baseScales({ y:{ title:'Zobrazení', beginAtZero:true, grid:{color:'rgba(0,0,0,0.05)'} } })
-  });
+  const threadGroup = (th) => `
+    <div class="x-thread ${th.highlight ? 'x-thread--best' : ''}">
+      <div class="x-thread__head">
+        <div class="x-thread__avatar">RJ</div>
+        <div>
+          <div class="x-thread__name">Richard Jahoda <span class="x-thread__handle">@richard_jahoda</span></div>
+          <div class="x-thread__date">${th.date} · ${th.topic}</div>
+        </div>
+        <div class="x-thread__total">${fmt(th.impressions)} zobr.</div>
+      </div>
+      <div class="x-thread__tweets">
+        ${th.tweets.map(tweetCard).join('')}
+      </div>
+    </div>`;
 
-  // Thread table
-  const rows = threads.map(t=>`
-    <tr${t.highlight?' class="x-row--highlight"':''}>
-      <td>${t.date}</td>
-      <td>${t.topic}${t.highlight?' <span class="x-badge">Nejlepší</span>':''}</td>
-      <td style="text-align:center">${t.tweets}</td>
-      <td style="text-align:right;font-weight:${t.highlight?'700':'400'};color:${t.highlight?'#0062FF':'inherit'}">${fmt(t.impressions)}</td>
-      <td style="text-align:right">${fmt(t.top_tweet_impressions)}</td>
-    </tr>`).join('');
-
-  $('#xThreadTable').innerHTML = `
-    <table class="tbl">
-      <thead><tr>
-        <th>Datum</th><th>Téma</th>
-        <th style="text-align:center">Tweety</th>
-        <th style="text-align:right">Zobrazení (thread)</th>
-        <th style="text-align:right">Nejlepší tweet</th>
-      </tr></thead>
-      <tbody>${rows}</tbody>
-      <tfoot><tr>
-        <td colspan="2"><strong>Celkem</strong></td>
-        <td style="text-align:center"><strong>${x.total_tweets}</strong></td>
-        <td style="text-align:right"><strong>${fmt(x.total_impressions)}</strong></td>
-        <td></td>
-      </tr></tfoot>
-    </table>`;
+  $('#xThreadTable').innerHTML = `<div class="x-feed">${threads.map(threadGroup).join('')}</div>`;
 
   $('#xNote').innerHTML = `
     Úvodní příspěvky na X (Twitter) neměly výrazný dosah — pohybovaly se v desítkách zobrazení.

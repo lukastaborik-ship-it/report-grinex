@@ -11,49 +11,101 @@
       "date": "25. 2. 2026",
       "topic": "BARVY BYZNYSU — návrat na X",
       "impressions": 72,
-      "tweets": 2,
-      "top_tweet_impressions": 47,
-      "highlight": false
+      "highlight": false,
+      "tweets": [
+        {
+          "text": "Jsem zpět na X a rovnou s novinkou! Dnes vyšel první díl našeho podcastu #BARVYBYZNYSU 🤯 První téma je víc než aktuální: ESOP (Employee Stock Option Plan). Pokud řešíte motivaci vašeho týmu a daně, tohle si nenechte ujít. Odkaz na video i audio verzi dávám pod příspěvek. ⬇️",
+          "views": 47, "likes": 0, "replies": 2, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "open.spotify.com · BARVY BYZNYSU — Podcast · Grinex",
+          "views": 25, "likes": 0, "replies": 0, "retweets": 0, "highlight": false
+        }
+      ]
     },
     {
       "date": "10. 4. 2026",
       "topic": "#DueDiligence — prověrka firem",
       "impressions": 105,
-      "tweets": 3,
-      "top_tweet_impressions": 59,
-      "highlight": false
+      "highlight": false,
+      "tweets": [
+        {
+          "text": "#DueDiligence není jen o hledání problémů. Často je to jediná šance získat od prodávajícího klíčová data, dokud je ještě motivovaný spolupracovat. Prošvihnete to? Na temnou historii firmy zůstanete sami. Řešili jsme přesně tohle. ⚠️⬇️",
+          "views": 59, "likes": 1, "replies": 1, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "Dva týdny detektivní práce — prověrka znění zákona o DZP napříč celou jeho existencí, pátrání v klientských složkách, katastru nemovitostí i obchodním rejstříku. Výsledek: všechny nabývací tituly včetně dokumentace technických zhodnocení dohledány. ✅",
+          "views": 26, "likes": 0, "replies": 1, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "U majetku musíte prokázat nabývací cenu po celou dobu odpisování — klidně i 50 let. Dobrý účetní musí být připravený stát se detektivem, archivářem a někdy i archeologem. A due diligence? Využijte ji, dokud druhá strana spolupracuje. 🙏",
+          "views": 20, "likes": 0, "replies": 0, "retweets": 0, "highlight": false
+        }
+      ]
     },
     {
       "date": "17. 4. 2026",
       "topic": "Seminář Endors — přeměny firem",
       "impressions": 73,
-      "tweets": 3,
-      "top_tweet_impressions": 45,
-      "highlight": false
+      "highlight": false,
+      "tweets": [
+        {
+          "text": "Minulý týden jsem měl možnost vést menší seminář pro tým Endors | advokátní kancelář. Tématem byl účetní a daňový pohled na přeměny společností. Díky menší skupině měla diskuze velmi konkrétní a praktický charakter.",
+          "views": 45, "likes": 0, "replies": 1, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "Přeměny jsou typicky multidisciplinární téma. Bez dobré spolupráce a komunikace mezi právníky, účetními a daňaři to jednoduše nefunguje. Právě proto mají podobná setkání smysl pro obě strany.",
+          "views": 16, "likes": 0, "replies": 1, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "Možnost poznat pohled z druhé strany, tentokrát od advokátů, je vždy přínosná. Došlo i na zkušenosti z minulosti a pár historek z praxe. Díky #Endors za pozvání a otevřenou diskuzi.",
+          "views": 12, "likes": 0, "replies": 0, "retweets": 0, "highlight": false
+        }
+      ]
     },
     {
       "date": "14. 5. 2026",
       "topic": "Světový pohár paracyklistika",
       "impressions": 70,
-      "tweets": 2,
-      "top_tweet_impressions": 44,
-      "highlight": false
+      "highlight": false,
+      "tweets": [
+        {
+          "text": "Moje mise #SvětovýPohár v paracyklistice 2026 splněna! @mcjahoda je celkovým vítězem a přidal i 4 výhry v dílčích závodech. Thajsko, Španělsko, Belgie, Itálie — vše během posledních 7 týdnů. Teď nás čeká finále daňové sezony s týmem @GrinexCzechRep !",
+          "views": 44, "likes": 0, "replies": 1, "retweets": 0, "highlight": false
+        },
+        {
+          "text": "A zároveň se velice těším na novinku v naší nabídce: AI event s Richard Jahoda, FCCA. Podrobnosti již brzy 👌",
+          "views": 26, "likes": 0, "replies": 0, "retweets": 0, "highlight": false
+        }
+      ]
     },
     {
       "date": "22. 5. 2026",
       "topic": "AI show — Edison Filmhub Prague",
       "impressions": 37,
-      "tweets": 1,
-      "top_tweet_impressions": 37,
-      "highlight": false
+      "highlight": false,
+      "tweets": [
+        {
+          "text": "Internet je plný frází o digitalizaci účetnictví a #AI.\n\nNebudeme opakovat mnohokrát vyřčené pravdy. Mluvíme o konkrétních řešeních, která jsme uvedli do praxe a rádi se o ně s vámi podělíme.\n\nAI show: 28. 5. Edison Filmhub Prague.",
+          "views": 37, "likes": 0, "replies": 0, "retweets": 0, "highlight": false
+        }
+      ]
     },
     {
       "date": "15. 6. 2026",
       "topic": "ČT a parasport — engagement thread",
       "impressions": 966,
-      "tweets": 2,
-      "top_tweet_impressions": 918,
-      "highlight": true
+      "highlight": true,
+      "tweets": [
+        {
+          "text": "ČT dělá fantastickou práci na poli parasportu. To je přesně naplnění úlohy veřejnoprávní televize. Ano, sledovanost těchto sportů není vysoká, a když parahokej svědčí o opaku. Zájem sponzorů je podmíněn mediálním pokrytím těchto událostí, minimálně zpravodajským. (1)",
+          "views": 918, "likes": 18, "replies": 1, "retweets": 0, "highlight": true
+        },
+        {
+          "text": "(2) Bez ČT by spolupráce se sponzory byla velmi obtížná. Komerční TV, zcela logicky, toto téma (až na malé výjimky) nezajímá. To je na ČT a ona to dělá. Díky!",
+          "views": 48, "likes": 3, "replies": 1, "retweets": 0, "highlight": false
+        }
+      ]
     }
   ]
 }

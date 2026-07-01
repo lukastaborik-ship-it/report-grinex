@@ -875,6 +875,9 @@ function renderMeta(){
   const totalIgViews = ig.monthly.reduce((s,d)=>s+(d.views||0),0);
   const totalFbInter = fb.monthly.reduce((s,d)=>s+(d.interactions||0),0);
   const totalIgInter = ig.monthly.reduce((s,d)=>s+(d.interactions||0),0);
+  const totalFbPosts = fb.history.reduce((s,d)=>s+(d.posts||0),0);
+  const totalIgPosts = ig.history.reduce((s,d)=>s+(d.posts||0),0);
+  const totalIgLikes = ig.history.reduce((s,d)=>s+(d.likes||0),0);
 
   // KPI tiles — H1 2026
   $('#metaKpiGrid').innerHTML = [

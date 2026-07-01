@@ -24,6 +24,7 @@ const SECTIONS = [
   { id:'top',      icon:'6', title:'TOP příspěvky',     sub:'Nejúspěšnější příspěvky podle dosahu',     person:false },
   { id:'pipeline', icon:'7', title:'Stav obsahu',       sub:'Publikováno vs. rozpracováno',             person:false, year:false },
   { id:'profiles', icon:'8', title:'Profil ambasadora',  sub:'LinkedIn Analytics — data přímo z platformy', person:false, year:false },
+  { id:'meta',     icon:'9', title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
 ];
 
 let DATA = null;
@@ -106,7 +107,7 @@ function render(){
 
   ({ overview:renderOverview, reach:renderReach, timing:renderTiming,
      network:renderNetwork, compare:renderCompare, top:renderTop, pipeline:renderPipeline,
-     profiles:renderProfiles })[sec.id]();
+     profiles:renderProfiles, meta:renderMeta })[sec.id]();
 }
 
 const kkey = () => `${state.year}|${state.person}`;
@@ -834,6 +835,118 @@ function renderCompanyPage(a){
           y:{grid:{color:C.grid}, border:{display:false}, ticks:{callback:v=>fmtK(v)}} } }
     });
   }
+}
+
+// ---- 9. META (Facebook + Instagram) ----
+function renderMeta(){
+  const m = DATA.meta_analytics;
+  if(!m){ $('#s-meta').innerHTML='<div class="note">Žádná Meta data.</div>'; return; }
+
+  const FB = '#1877F2';
+  const IG = '#E1306C';
+  const fb = m.facebook;
+  const ig = m.instagram;
+
+  // aggregates (only months with data)
+  const totalFbViews = fb.monthly.reduce((s,d)=>s+(d.views||0),0);
+  const totalIgViews = ig.monthly.reduce((s,d)=>s+(d.views||0),0);
+  const totalFbInter = fb.monthly.reduce((s,d)=>s+(d.interactions||0),0);
+  const totalIgInter = ig.monthly.reduce((s,d)=>s+(d.interactions||0),0);
+  const totalPosts   = (m.monthly_totals||[]).reduce((s,d)=>s+(d.posts||0),0);
+
+  // KPI tiles
+  $('#metaKpiGrid').innerHTML = [
+    { label:'Příspěvků 2026 (FB+IG)', value:fmt(totalPosts),          sub:'za sledované období' },
+    { label:'Facebook sledující',      value:fmt(fb.followers_now),    sub:'celkem · k 30. 6. 2026' },
+    { label:'Instagram sledující',     value:fmt(ig.followers_now),    sub:'celkem · k 30. 6. 2026' },
+    { label:'FB zobrazení',            value:fmtMln(totalFbViews),     sub:'březen–červen 2026' },
+    { dark:true, label:'IG zobrazení', value:fmtMln(totalIgViews),     sub:'březen–červen 2026' },
+  ].map(t=>`<div class="kpi${t.dark?' kpi--dark':''}">
+    <div class="kpi__label">${t.label}</div>
+    <div class="kpi__value">${t.value}</div>
+    <div class="kpi__sub">${t.sub}</div>
+  </div>`).join('');
+
+  // Charts
+  const labels = fb.monthly.map(d=>d.label);
+  mkChart('metaFbChart',{ type:'bar', data:{ labels,
+    datasets:[{ label:'Zobrazení', data:fb.monthly.map(d=>d.views||0), backgroundColor:FB, borderRadius:3 }]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.y)+' zobrazení'}} },
+      scales:baseScales() }});
+
+  mkChart('metaIgChart',{ type:'bar', data:{ labels,
+    datasets:[{ label:'Zobrazení', data:ig.monthly.map(d=>d.views||0), backgroundColor:IG, borderRadius:3 }]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.y)+' zobrazení'}} },
+      scales:baseScales() }});
+
+  // Monthly detail table
+  const dash = v => v!=null ? fmt(v) : '<span class="muted">—</span>';
+  const rows = fb.monthly.map((fbM,i)=>{
+    const igM = ig.monthly[i];
+    const totM = (m.monthly_totals||[])[i];
+    const peak = !!fbM.note && fbM.views!=null;
+    return `<tr${peak?' style="background:rgba(24,119,242,0.04)"':''}>
+      <td><strong>${fbM.full}</strong>${peak?` <span style="color:${FB};font-size:11px;font-family:'Montserrat';font-weight:600">★ Peak</span>`:''}</td>
+      <td class="num">${totM?fmt(totM.posts):'—'}</td>
+      <td class="num" style="color:${FB};font-weight:${peak?'700':'400'}">${dash(fbM.views)}</td>
+      <td class="num">${dash(fbM.interactions)}</td>
+      <td class="num">${fbM.new_followers!=null?'+'+fmt(fbM.new_followers):'<span class="muted">—</span>'}</td>
+      <td class="num" style="color:${IG}">${dash(igM.views)}</td>
+      <td class="num">${dash(igM.reach)}</td>
+      <td class="num">${dash(igM.interactions)}</td>
+    </tr>`;
+  }).join('');
+  $('#metaTable').innerHTML = `<table class="tbl" style="width:100%">
+    <thead><tr>
+      <th>Měsíc</th>
+      <th class="num">Přísp.</th>
+      <th class="num" style="color:${FB}">FB Zobrazení</th>
+      <th class="num">FB Interakce</th>
+      <th class="num">FB Noví sledující</th>
+      <th class="num" style="color:${IG}">IG Zobrazení</th>
+      <th class="num">IG Dosah</th>
+      <th class="num">IG Interakce</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr style="font-weight:700;border-top:2px solid var(--border-default)">
+      <td>Celkem</td>
+      <td class="num">${fmt(totalPosts)}</td>
+      <td class="num">${fmt(totalFbViews)}</td>
+      <td class="num">${fmt(totalFbInter)}</td>
+      <td class="num">—</td>
+      <td class="num">${fmt(totalIgViews)}</td>
+      <td class="num">—</td>
+      <td class="num">${fmt(totalIgInter)}</td>
+    </tr></tfoot>
+  </table>`;
+
+  // Top posts
+  const topTable = (posts, color, platform) => {
+    if(!posts?.length) return '';
+    return `<div class="card">
+      <div class="card__head">
+        <div class="card__title" style="color:${color}">TOP příspěvky — ${platform}</div>
+        <div class="card__hint">Q2 2025 · dle zobrazení</div>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">Lajky</th><th class="num">Kom.</th></tr></thead>
+        <tbody>${posts.map((p,i)=>`<tr>
+          <td class="rank">${i+1}</td>
+          <td>${p.title}</td>
+          <td>${p.date}</td>
+          <td class="num">${fmt(p.views)}</td>
+          <td class="num">${fmt(p.likes)}</td>
+          <td class="num">${fmt(p.comments)}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+  };
+  $('#metaTopPosts').innerHTML = topTable(fb.top_posts, FB, 'Facebook') + topTable(ig.top_posts, IG, 'Instagram');
+
+  // Note
+  $('#metaNote').innerHTML = `💡 Data za březen–květen 2026 ze screenshotů Meta Business Suite (KD prezentace). Červen 2026 bude doplněn po uzavření měsíce. TOP příspěvky jsou za Q2/2025 — individuální data příspěvků za rok 2026 nejsou k dispozici. <strong>Březen 2026: 138 900 FB zobrazení</strong> díky virálnímu šíření videí z podcastu o švarcsystému.`;
 }
 
 // ---- SSI CARD ----

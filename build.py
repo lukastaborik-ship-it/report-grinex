@@ -354,6 +354,13 @@ def main():
             data["linkedin_analytics"] = json.load(fh)
         print(f"  LinkedIn Analytics: načteno {len(data['linkedin_analytics'])} profil(ů) z li_analytics.json")
 
+    # Merge Meta (Facebook + Instagram) analytická data (meta_analytics.json)
+    meta_path = os.path.join(HERE, "meta_analytics.json")
+    if os.path.exists(meta_path):
+        with open(meta_path, encoding="utf-8") as fh:
+            data["meta_analytics"] = json.load(fh)
+        print(f"  Meta Analytics: načteno z meta_analytics.json")
+
     out = os.path.join(HERE, "data.json")
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=1)

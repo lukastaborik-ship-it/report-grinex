@@ -8,13 +8,14 @@
    "all",
    "Richard Jahoda",
    "Richard Jahoda ml.",
-   "Kamila Blechová"
+   "Kamila Blechová",
+   "Lenka Nečasová"
   ],
   "total_prepared": 437,
   "total_published": 139,
   "total_reach_all": 175463,
   "source_file": "Grinex ContentPlan.xlsx",
-  "generated_at": "01.07.2026 07:51",
+  "generated_at": "01.07.2026 08:10",
   "data_until": "01.07.2026"
  },
  "kpis": {
@@ -50,6 +51,14 @@
    "comments": 12,
    "engagement": 2.22
   },
+  "all|Lenka Nečasová": {
+   "reach": 3232,
+   "posts": 6,
+   "avg": 539,
+   "likes": 47,
+   "comments": 3,
+   "engagement": 1.55
+  },
   "2025|all": {
    "reach": 122779,
    "posts": 80,
@@ -82,6 +91,14 @@
    "comments": 7,
    "engagement": 2.21
   },
+  "2025|Lenka Nečasová": {
+   "reach": 0,
+   "posts": 0,
+   "avg": 0,
+   "likes": 0,
+   "comments": 0,
+   "engagement": 0
+  },
   "2026|all": {
    "reach": 52684,
    "posts": 59,
@@ -113,6 +130,14 @@
    "likes": 67,
    "comments": 5,
    "engagement": 2.23
+  },
+  "2026|Lenka Nečasová": {
+   "reach": 3232,
+   "posts": 6,
+   "avg": 539,
+   "likes": 47,
+   "comments": 3,
+   "engagement": 1.55
   }
  },
  "monthly": {
@@ -172,6 +197,20 @@
    6570,
    0
   ],
+  "2025|Lenka Nečasová": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
   "2026|all": [
    1985,
    0,
@@ -221,6 +260,20 @@
    0,
    0,
    3222,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "2026|Lenka Nečasová": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   3232,
    0,
    0,
    0,
@@ -316,6 +369,20 @@
     0,
     0,
     0
+   ],
+   "Lenka Nečasová": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3232,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
    ]
   }
  },
@@ -385,12 +452,14 @@
   "2025": {
    "Richard Jahoda": 82462,
    "Richard Jahoda ml.": 29401,
-   "Kamila Blechová": 6570
+   "Kamila Blechová": 6570,
+   "Lenka Nečasová": 0
   },
   "2026": {
    "Richard Jahoda": 32106,
    "Richard Jahoda ml.": 11872,
-   "Kamila Blechová": 3222
+   "Kamila Blechová": 3222,
+   "Lenka Nečasová": 3232
   }
  },
  "timing": {
@@ -449,9 +518,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1262,
-     "n": 139,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -666,26 +735,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 946,
-     "n": 55
-    },
-    {
-     "d": 2,
-     "h": 0,
-     "avg": 164,
-     "n": 4
-    },
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 1535,
-     "n": 80
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -744,9 +794,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1548,
-     "n": 74,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -961,20 +1011,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 1147,
-     "n": 28
-    },
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 1793,
-     "n": 46
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -1033,9 +1070,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1720,
-     "n": 24,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -1250,20 +1287,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 1079,
-     "n": 11
-    },
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 2262,
-     "n": 13
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -1322,9 +1346,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 699,
-     "n": 14,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -1539,20 +1563,283 @@
      "low": true
     }
    ],
-   "heatmap": [
+   "heatmap": [],
+   "outliers_excluded": 0,
+   "outlier_cap": 35000
+  },
+  "all|Lenka Nečasová": {
+   "day": [
     {
-     "d": 0,
-     "h": 0,
-     "avg": 644,
-     "n": 5
+     "label": "Pondělí",
+     "short": "Po",
+     "avg": 539,
+     "n": 6,
+     "low": true
     },
     {
-     "d": 3,
-     "h": 0,
-     "avg": 730,
-     "n": 9
+     "label": "Úterý",
+     "short": "Út",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Středa",
+     "short": "St",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Čtvrtek",
+     "short": "Čt",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Pátek",
+     "short": "Pá",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Sobota",
+     "short": "So",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Neděle",
+     "short": "Ne",
+     "avg": 0,
+     "n": 0,
+     "low": true
     }
    ],
+   "hour": [
+    {
+     "hour": 0,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 1,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 2,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 3,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 4,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 5,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 6,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 7,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 8,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 9,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 10,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 11,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 12,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 13,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 14,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 15,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 16,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 17,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 18,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 19,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 20,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 21,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 22,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 23,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "month": [
+    {
+     "label": "Leden",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Únor",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Březen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Duben",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Květen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Červen",
+     "avg": 539,
+     "n": 6,
+     "low": true
+    },
+    {
+     "label": "Červenec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Srpen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Září",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Říjen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Listopad",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Prosinec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -1611,9 +1898,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1535,
-     "n": 80,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -1828,14 +2115,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 1535,
-     "n": 80
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -1894,9 +2174,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1793,
-     "n": 46,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -2111,14 +2391,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 1793,
-     "n": 46
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -2177,9 +2450,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 2262,
-     "n": 13,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -2394,14 +2667,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 3,
-     "h": 0,
-     "avg": 2262,
-     "n": 13
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -2460,8 +2726,8 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 730,
-     "n": 9,
+     "avg": 0,
+     "n": 0,
      "low": true
     },
     {
@@ -2677,14 +2943,283 @@
      "low": true
     }
    ],
-   "heatmap": [
+   "heatmap": [],
+   "outliers_excluded": 0,
+   "outlier_cap": 35000
+  },
+  "2025|Lenka Nečasová": {
+   "day": [
     {
-     "d": 3,
-     "h": 0,
-     "avg": 730,
-     "n": 9
+     "label": "Pondělí",
+     "short": "Po",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Úterý",
+     "short": "Út",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Středa",
+     "short": "St",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Čtvrtek",
+     "short": "Čt",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Pátek",
+     "short": "Pá",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Sobota",
+     "short": "So",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Neděle",
+     "short": "Ne",
+     "avg": 0,
+     "n": 0,
+     "low": true
     }
    ],
+   "hour": [
+    {
+     "hour": 0,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 1,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 2,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 3,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 4,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 5,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 6,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 7,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 8,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 9,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 10,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 11,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 12,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 13,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 14,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 15,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 16,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 17,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 18,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 19,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 20,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 21,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 22,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 23,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "month": [
+    {
+     "label": "Leden",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Únor",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Březen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Duben",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Květen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Červen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Červenec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Srpen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Září",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Říjen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Listopad",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Prosinec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -2743,9 +3278,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 893,
-     "n": 59,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -2960,20 +3495,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 946,
-     "n": 55
-    },
-    {
-     "d": 2,
-     "h": 0,
-     "avg": 164,
-     "n": 4
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -3032,9 +3554,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1147,
-     "n": 28,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -3249,14 +3771,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 1147,
-     "n": 28
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -3315,9 +3830,9 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 1079,
-     "n": 11,
-     "low": false
+     "avg": 0,
+     "n": 0,
+     "low": true
     },
     {
      "hour": 1,
@@ -3532,14 +4047,7 @@
      "low": true
     }
    ],
-   "heatmap": [
-    {
-     "d": 0,
-     "h": 0,
-     "avg": 1079,
-     "n": 11
-    }
-   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   },
@@ -3598,8 +4106,8 @@
    "hour": [
     {
      "hour": 0,
-     "avg": 644,
-     "n": 5,
+     "avg": 0,
+     "n": 0,
      "low": true
     },
     {
@@ -3815,14 +4323,283 @@
      "low": true
     }
    ],
-   "heatmap": [
+   "heatmap": [],
+   "outliers_excluded": 0,
+   "outlier_cap": 35000
+  },
+  "2026|Lenka Nečasová": {
+   "day": [
     {
-     "d": 0,
-     "h": 0,
-     "avg": 644,
-     "n": 5
+     "label": "Pondělí",
+     "short": "Po",
+     "avg": 539,
+     "n": 6,
+     "low": true
+    },
+    {
+     "label": "Úterý",
+     "short": "Út",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Středa",
+     "short": "St",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Čtvrtek",
+     "short": "Čt",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Pátek",
+     "short": "Pá",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Sobota",
+     "short": "So",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Neděle",
+     "short": "Ne",
+     "avg": 0,
+     "n": 0,
+     "low": true
     }
    ],
+   "hour": [
+    {
+     "hour": 0,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 1,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 2,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 3,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 4,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 5,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 6,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 7,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 8,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 9,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 10,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 11,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 12,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 13,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 14,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 15,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 16,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 17,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 18,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 19,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 20,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 21,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 22,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "hour": 23,
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "month": [
+    {
+     "label": "Leden",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Únor",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Březen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Duben",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Květen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Červen",
+     "avg": 539,
+     "n": 6,
+     "low": true
+    },
+    {
+     "label": "Červenec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Srpen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Září",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Říjen",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Listopad",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    },
+    {
+     "label": "Prosinec",
+     "avg": 0,
+     "n": 0,
+     "low": true
+    }
+   ],
+   "heatmap": [],
    "outliers_excluded": 0,
    "outlier_cap": 35000
   }
@@ -4806,6 +5583,415 @@
      "foll_yearly_gain": {
       "2025": 1208.0,
       "2026": 630.0
+     }
+    }
+   }
+  },
+  "Kamila Blechová": {
+   "LinkedIn": {
+    "series": [
+     {
+      "date": "2025-07-07",
+      "foll": 321.0,
+      "conn": 264.0
+     },
+     {
+      "date": "2025-07-14",
+      "foll": 321.0,
+      "conn": 264.0
+     },
+     {
+      "date": "2025-07-21",
+      "foll": 321.0,
+      "conn": 264.0
+     },
+     {
+      "date": "2025-07-28",
+      "foll": 321.0,
+      "conn": 264.0
+     },
+     {
+      "date": "2025-08-04",
+      "foll": 339.0,
+      "conn": 283.0
+     },
+     {
+      "date": "2025-08-11",
+      "foll": 357.0,
+      "conn": 306.0
+     },
+     {
+      "date": "2025-08-18",
+      "foll": 381.0,
+      "conn": 327.0
+     },
+     {
+      "date": "2025-08-25",
+      "foll": 398.0,
+      "conn": 347.0
+     },
+     {
+      "date": "2025-09-01",
+      "foll": 419.0,
+      "conn": 368.0
+     },
+     {
+      "date": "2025-09-08",
+      "foll": 434.0,
+      "conn": 384.0
+     },
+     {
+      "date": "2025-09-15",
+      "foll": 465.0,
+      "conn": 414.0
+     },
+     {
+      "date": "2025-09-22",
+      "foll": 496.0,
+      "conn": 443.0
+     },
+     {
+      "date": "2025-09-29",
+      "foll": 524.0,
+      "conn": 474.0
+     },
+     {
+      "date": "2025-10-06",
+      "foll": 549.0,
+      "conn": 497.0
+     },
+     {
+      "date": "2025-10-13",
+      "foll": 582.0,
+      "conn": 530.0
+     },
+     {
+      "date": "2025-10-20",
+      "foll": 614.0,
+      "conn": 560.0
+     },
+     {
+      "date": "2025-10-27",
+      "foll": 650.0,
+      "conn": 590.0
+     },
+     {
+      "date": "2025-11-03",
+      "foll": 655.0,
+      "conn": 620.0
+     },
+     {
+      "date": "2025-11-10",
+      "foll": 703.0,
+      "conn": 643.0
+     },
+     {
+      "date": "2025-11-17",
+      "foll": 727.0,
+      "conn": 666.0
+     },
+     {
+      "date": "2025-11-24",
+      "foll": 739.0,
+      "conn": 678.0
+     },
+     {
+      "date": "2025-12-01",
+      "foll": 769.0,
+      "conn": 705.0
+     },
+     {
+      "date": "2025-12-08",
+      "foll": 793.0,
+      "conn": 729.0
+     },
+     {
+      "date": "2025-12-15",
+      "foll": 814.0,
+      "conn": 749.0
+     },
+     {
+      "date": "2025-12-22",
+      "foll": 829.0,
+      "conn": 764.0
+     },
+     {
+      "date": "2025-12-29",
+      "foll": 842.0,
+      "conn": 777.0
+     },
+     {
+      "date": "2026-01-05",
+      "foll": 864.0,
+      "conn": 800.0
+     },
+     {
+      "date": "2026-01-12",
+      "foll": 886.0,
+      "conn": 823.0
+     },
+     {
+      "date": "2026-01-19",
+      "foll": 897.0,
+      "conn": 835.0
+     },
+     {
+      "date": "2026-01-26",
+      "foll": 910.0,
+      "conn": 847.0
+     },
+     {
+      "date": "2026-02-02",
+      "foll": 916.0,
+      "conn": 850.0
+     },
+     {
+      "date": "2026-02-09",
+      "foll": 922.0,
+      "conn": 855.0
+     },
+     {
+      "date": "2026-02-16",
+      "foll": 927.0,
+      "conn": 859.0
+     },
+     {
+      "date": "2026-02-23",
+      "foll": 932.0,
+      "conn": 863.0
+     },
+     {
+      "date": "2026-03-02",
+      "foll": 935.0,
+      "conn": 867.0
+     },
+     {
+      "date": "2026-03-09",
+      "foll": 938.0,
+      "conn": 870.0
+     },
+     {
+      "date": "2026-03-16",
+      "foll": 939.0,
+      "conn": 871.0
+     },
+     {
+      "date": "2026-03-23",
+      "foll": 940.0,
+      "conn": 872.0
+     },
+     {
+      "date": "2026-03-30",
+      "foll": 953.0,
+      "conn": 885.0
+     },
+     {
+      "date": "2026-04-06",
+      "foll": 958.0,
+      "conn": 888.0
+     },
+     {
+      "date": "2026-04-13",
+      "foll": 968.0,
+      "conn": 898.0
+     },
+     {
+      "date": "2026-04-20",
+      "foll": 985.0,
+      "conn": 915.0
+     },
+     {
+      "date": "2026-04-27",
+      "foll": 995.0,
+      "conn": 925.0
+     },
+     {
+      "date": "2026-05-04",
+      "foll": 1000.0,
+      "conn": 930.0
+     },
+     {
+      "date": "2026-05-11",
+      "foll": 1003.0,
+      "conn": 933.0
+     },
+     {
+      "date": "2026-05-18",
+      "foll": 1014.0,
+      "conn": 944.0
+     },
+     {
+      "date": "2026-05-25",
+      "foll": 1029.0,
+      "conn": 959.0
+     },
+     {
+      "date": "2026-06-01",
+      "foll": 1034.0,
+      "conn": 964.0
+     },
+     {
+      "date": "2026-06-08",
+      "foll": 1042.0,
+      "conn": 972.0
+     },
+     {
+      "date": "2026-06-15",
+      "foll": 1060.0,
+      "conn": 989.0
+     },
+     {
+      "date": "2026-06-22",
+      "foll": 1090.0,
+      "conn": 1018.0
+     },
+     {
+      "date": "2026-06-29",
+      "foll": 1090.0,
+      "conn": 1018.0
+     }
+    ],
+    "summary": {
+     "foll_start": 321.0,
+     "foll_now": 1090.0,
+     "foll_gain": 769.0,
+     "foll_pct": 240,
+     "conn_start": 264.0,
+     "conn_now": 1018.0,
+     "conn_gain": 754.0,
+     "conn_pct": 286,
+     "foll_yearly_gain": {
+      "2025": 521.0,
+      "2026": 248.0
+     }
+    }
+   }
+  },
+  "Lenka Nečasová": {
+   "LinkedIn": {
+    "series": [
+     {
+      "date": "2026-02-02",
+      "foll": 37.0,
+      "conn": 31.0
+     },
+     {
+      "date": "2026-02-09",
+      "foll": 53.0,
+      "conn": 47.0
+     },
+     {
+      "date": "2026-02-16",
+      "foll": 64.0,
+      "conn": 58.0
+     },
+     {
+      "date": "2026-02-23",
+      "foll": 80.0,
+      "conn": 74.0
+     },
+     {
+      "date": "2026-03-02",
+      "foll": 91.0,
+      "conn": 85.0
+     },
+     {
+      "date": "2026-03-09",
+      "foll": 103.0,
+      "conn": 97.0
+     },
+     {
+      "date": "2026-03-16",
+      "foll": 114.0,
+      "conn": 108.0
+     },
+     {
+      "date": "2026-03-23",
+      "foll": 141.0,
+      "conn": 136.0
+     },
+     {
+      "date": "2026-03-30",
+      "foll": 154.0,
+      "conn": 149.0
+     },
+     {
+      "date": "2026-04-06",
+      "foll": 169.0,
+      "conn": 164.0
+     },
+     {
+      "date": "2026-04-13",
+      "foll": 181.0,
+      "conn": 176.0
+     },
+     {
+      "date": "2026-04-20",
+      "foll": 191.0,
+      "conn": 186.0
+     },
+     {
+      "date": "2026-04-27",
+      "foll": 201.0,
+      "conn": 197.0
+     },
+     {
+      "date": "2026-05-04",
+      "foll": 212.0,
+      "conn": 208.0
+     },
+     {
+      "date": "2026-05-11",
+      "foll": 220.0,
+      "conn": 215.0
+     },
+     {
+      "date": "2026-05-18",
+      "foll": 229.0,
+      "conn": 224.0
+     },
+     {
+      "date": "2026-05-25",
+      "foll": 242.0,
+      "conn": 237.0
+     },
+     {
+      "date": "2026-06-01",
+      "foll": 260.0,
+      "conn": 255.0
+     },
+     {
+      "date": "2026-06-08",
+      "foll": 275.0,
+      "conn": 270.0
+     },
+     {
+      "date": "2026-06-15",
+      "foll": 282.0,
+      "conn": 277.0
+     },
+     {
+      "date": "2026-06-22",
+      "foll": 305.0,
+      "conn": 300.0
+     },
+     {
+      "date": "2026-06-29",
+      "foll": 305.0,
+      "conn": 300.0
+     }
+    ],
+    "summary": {
+     "foll_start": 37.0,
+     "foll_now": 305.0,
+     "foll_gain": 268.0,
+     "foll_pct": 724,
+     "conn_start": 31.0,
+     "conn_now": 300.0,
+     "conn_gain": 269.0,
+     "conn_pct": 868,
+     "foll_yearly_gain": {
+      "2026": 268.0
      }
     }
    }

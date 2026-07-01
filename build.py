@@ -27,9 +27,9 @@ WEEKDAYS_SHORT = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"]
 MONTHS = ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen",
           "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"]
 # Osoby v sekci sítě (Network grow)
-PERSONS = ["Richard Jahoda", "Richard Jahoda ml.", "Grinex LinkedIn"]
+PERSONS = ["Richard Jahoda", "Richard Jahoda ml.", "Kamila Blechová", "Lenka Nečasová", "Grinex LinkedIn"]
 # Ambasadoři — pro content performance (filtr/grafy)
-AMBASSADORS = ["Richard Jahoda", "Richard Jahoda ml.", "Kamila Blechová"]
+AMBASSADORS = ["Richard Jahoda", "Richard Jahoda ml.", "Kamila Blechová", "Lenka Nečasová"]
 LOW_SAMPLE = 10          # práh pro upozornění na malý vzorek
 TIMING_OUTLIER_CAP = 35_000  # příspěvky nad tento dosah se z výpočtu nejlepšího času vyloučí
 
@@ -221,9 +221,12 @@ def build(posts, status_counter, total_prepared, net):
         for p in sub_timing:
             d = p["date"]
             byday[d.weekday()].append(p["imp"])
-            byhour[d.hour].append(p["imp"])
             bymonth[d.month - 1].append(p["imp"])
-            heat[(d.weekday(), d.hour)].append(p["imp"])
+            # Posts with no time info in Excel arrive at 00:00:00 — skip for hour/heatmap
+            has_time = d.hour != 0 or d.minute != 0 or d.second != 0
+            if has_time:
+                byhour[d.hour].append(p["imp"])
+                heat[(d.weekday(), d.hour)].append(p["imp"])
         day = [{"label": WEEKDAYS[i], "short": WEEKDAYS_SHORT[i],
                 "avg": round(sum(byday[i]) / len(byday[i])) if byday[i] else 0,
                 "n": len(byday[i]), "low": len(byday[i]) < LOW_SAMPLE}

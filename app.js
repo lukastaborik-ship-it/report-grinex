@@ -82,7 +82,7 @@ function buildYearSeg(){
   $('#yearSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.year=b.dataset.year; render(); });
 }
 function buildPersonSeg(){
-  const labels = { 'all':'Vše', 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová' };
+  const labels = { 'all':'Vše', 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
   $('#personSeg').innerHTML = DATA.meta.persons.map(p=>`<button data-person="${p}"${p===state.person?' class="is-active"':''}>${labels[p]||p}</button>`).join('');
   $('#personSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.person=b.dataset.person; render(); });
 }
@@ -136,7 +136,7 @@ function renderOverview(){
     const last = [...(filt.length?filt:series.slice(0,1))].reverse().find(p=>p.foll!=null) || first;
     return { start:first.foll, foll:last.foll, date:last.date };
   };
-  const netPersons = (state.person==='all') ? ['Richard Jahoda', 'Richard Jahoda ml.', 'Grinex LinkedIn'] : [state.person];
+  const netPersons = (state.person==='all') ? Object.keys(DATA.network) : (DATA.network[state.person] ? [state.person] : []);
   let follNow=0, follGain=0, lastDate='';
   for(const p of netPersons){ const v=netUpTo(p); if(v){ follNow+=v.foll; follGain+=(v.foll-v.start); if(v.date>lastDate) lastDate=v.date; } }
   const follLabel = state.year==='all'
@@ -232,8 +232,8 @@ function renderReach(){
       scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}} } }});
 
   const yrs = DATA.meta.years;
-  const ambassadors = ['Richard Jahoda', 'Richard Jahoda ml.', 'Kamila Blechová'];
-  const ambColors   = [C.teal, C.koromiko, C.salmon];
+  const ambassadors = ['Richard Jahoda', 'Richard Jahoda ml.', 'Kamila Blechová', 'Lenka Nečasová'];
+  const ambColors   = [C.teal, C.koromiko, C.salmon, C.orchid];
   // Only show datasets that have data
   const yearlyDatasets = ambassadors
     .map((amb, i) => ({ label:amb, data:yrs.map(y=>(DATA.yearly[y]||{})[amb]||0), backgroundColor:ambColors[i], borderRadius:3, stack:'s' }))
@@ -335,7 +335,7 @@ function renderHeatmap(cells){
 // ---- 4. NETWORK ----
 function renderNetwork(){
   // tabs
-  const netTabPersons = ['Richard Jahoda', 'Richard Jahoda ml.', 'Grinex LinkedIn'];
+  const netTabPersons = Object.keys(DATA.network);
   $('#netTabs').innerHTML = netTabPersons.map(p=>`<button class="subtab${p===state.netTab?' is-active':''}" data-net="${p}">${p}</button>`).join('');
   $('#netTabs').querySelectorAll('.subtab').forEach(b=>b.onclick=()=>{ state.netTab=b.dataset.net; renderNetwork(); });
 
@@ -409,7 +409,7 @@ function renderCompare(){
       datalabels:{display:true,anchor:'end',align:'right',formatter:v=>fmt(v),font:{family:"'Montserrat'",weight:'700'},color:C.ink},
       tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.x)}}}, scales:{x:{grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}},y:{grid:{display:false}}} }});
 
-  const shortNames = { 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.' };
+  const shortNames = { 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
   const rows = persons.map((p,i)=>{
     const k=ks[i]; const net=DATA.network[p]?.LinkedIn?.summary;
     const col = PERSON_COLOR[p] || C.gray;
@@ -439,6 +439,7 @@ function renderTop(){
     'Richard Jahoda':'R. Jahoda',
     'Richard Jahoda ml.':'R. Jahoda ml.',
     'Kamila Blechová':'K. Blechová',
+    'Lenka Nečasová':'L. Nečasová',
   };
   const badgeHtml = (name) => {
     const col = PERSON_COLOR[name] || C.gray;
@@ -509,8 +510,8 @@ function renderProfiles(){
   const follGain = (firstNet && lastNet) ? lastNet.foll - firstNet.foll : 0;
 
   const monthly2026raw = DATA.monthly[`2026|${profTab}`] || new Array(12).fill(0);
-  const monthlyLabels  = MONTHS_SHORT.filter((_,i) => monthly2026raw[i] > 0);
-  const monthlyData    = monthly2026raw.filter(v => v > 0);
+  const monthlyLabels  = MONTHS_SHORT;
+  const monthlyData    = monthly2026raw;
 
   const photoHtml = a.photo
     ? `<img src="${a.photo}" alt="${profTab}" class="prof-photo">`
@@ -671,7 +672,7 @@ function renderProfiles(){
     });
   }
 
-  if(monthlyData.length > 0){
+  if(monthlyData.some(v=>v>0)){
     mkChart('profViews',{
       type:'bar',
       data:{ labels:monthlyLabels, datasets:[{ label:'Zobrazení', data:monthlyData,

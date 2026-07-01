@@ -83,7 +83,7 @@ function buildYearSeg(){
   $('#yearSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.year=b.dataset.year; render(); });
 }
 function buildPersonSeg(){
-  const labels = { 'all':'Vše', 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
+  const labels = { 'all':'Vše', 'Richard Jahoda':'R. Jahoda', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
   $('#personSeg').innerHTML = DATA.meta.persons.map(p=>`<button data-person="${p}"${p===state.person?' class="is-active"':''}>${labels[p]||p}</button>`).join('');
   $('#personSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.person=b.dataset.person; render(); });
 }
@@ -412,7 +412,7 @@ function renderCompare(){
       datalabels:{display:true,anchor:'end',align:'right',formatter:v=>fmt(v),font:{family:"'Montserrat'",weight:'700'},color:C.ink},
       tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.x)}}}, scales:{x:{grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}},y:{grid:{display:false}}} }});
 
-  const shortNames = { 'Richard Jahoda':'R. Jahoda st.', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
+  const shortNames = { 'Richard Jahoda':'R. Jahoda', 'Richard Jahoda ml.':'R. Jahoda ml.', 'Kamila Blechová':'K. Blechová', 'Lenka Nečasová':'L. Nečasová' };
   const rows = persons.map((p,i)=>{
     const k=ks[i]; const net=DATA.network[p]?.LinkedIn?.summary;
     const col = PERSON_COLOR[p] || C.gray;

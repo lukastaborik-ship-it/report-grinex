@@ -179,8 +179,15 @@ function renderOverview(){
 
 // ---- 2. REACH ----
 function renderReach(){
-  const yearForCharts = state.year==='all' ? DATA.meta.years[DATA.meta.years.length-1] : Number(state.year);
-  const m = DATA.monthly[`${yearForCharts}|${state.person}`] || new Array(12).fill(0);
+  const isAll = state.year === 'all';
+  const yrs = DATA.meta.years;
+  const yearForCharts = isAll ? yrs[yrs.length - 1] : Number(state.year);
+  const allMonthLabels = isAll
+    ? yrs.flatMap(yr => MONTHS_SHORT.map(mo => `${mo} '${String(yr).slice(2)}`))
+    : MONTHS_SHORT;
+  const m = isAll
+    ? yrs.flatMap(yr => DATA.monthly[`${yr}|${state.person}`] || new Array(12).fill(0))
+    : DATA.monthly[`${yearForCharts}|${state.person}`] || new Array(12).fill(0);
 
   // --- Souhrn nad grafy ---
   const totalReach = state.year === 'all'
@@ -193,7 +200,7 @@ function renderReach(){
 
   const kAll = state.year === 'all'
     ? DATA.meta.years.reduce((s,y) => {
-        const k2 = DATA.kpis[`${y}|${state.person==='all'?'Richard Jahoda':state.person}`] || {};
+        const k2 = DATA.kpis[`${y}|${state.person === 'all' ? 'all' : state.person}`] || {};
         return { posts: (s.posts||0)+(k2.posts||0), avg: 0 };
       }, {})
     : DATA.kpis[kkey()] || {};
@@ -217,19 +224,32 @@ function renderReach(){
         <div class="reach-sum-lbl">Průměr / příspěvek</div>
       </div>` : ''}
     </div>`;
-  mkChart('reachMonthly',{ type:'bar', data:{ labels:MONTHS_SHORT,
-    datasets:[{ label:`Dosah ${yearForCharts}`, data:m, backgroundColor:C.teal, borderRadius:3 }]},
+  mkChart('reachMonthly',{ type:'bar', data:{ labels:allMonthLabels,
+    datasets:[{ label:isAll?'Dosah (celé období)':`Dosah ${yearForCharts}`, data:m, backgroundColor:C.teal, borderRadius:3 }]},
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.y)}}}, scales:baseScales() }});
 
-  const cum = (DATA.cumulative[yearForCharts]||{}).cumulative || new Array(12).fill(0);
-  mkChart('reachCumulative',{ type:'line', data:{ labels:MONTHS_SHORT,
-    datasets:[{ label:`Kumulativně ${yearForCharts}`, data:cum, borderColor:C.teal, backgroundColor:'rgba(95,140,148,0.12)',
+  let cumRun = 0;
+  const cum = isAll
+    ? m.map(v => { cumRun += v; return cumRun; })
+    : (DATA.cumulative[yearForCharts]||{}).cumulative || new Array(12).fill(0);
+  mkChart('reachCumulative',{ type:'line', data:{ labels:allMonthLabels,
+    datasets:[{ label:isAll?'Kumulativně (celé období)':`Kumulativně ${yearForCharts}`, data:cum, borderColor:C.teal, backgroundColor:'rgba(95,140,148,0.12)',
       fill:true, tension:0.3, pointRadius:3, pointBackgroundColor:C.teal, borderWidth:2.5 }]},
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{...tip,callbacks:{label:c=>'Dohromady: '+fmt(c.parsed.y)}}}, scales:baseScales() }});
 
-  const stacks = DATA.monthly_stacked[String(yearForCharts)]||{};
-  const ds = Object.keys(stacks).map(p=>({ label:p, data:stacks[p], backgroundColor:PERSON_COLOR[p], borderRadius:2, stack:'s' }));
-  mkChart('reachStacked',{ type:'bar', data:{ labels:MONTHS_SHORT, datasets:ds },
+  let ds;
+  if(isAll) {
+    const ambs = ['Richard Jahoda','Richard Jahoda ml.','Kamila Blechová','Lenka Nečasová'];
+    ds = ambs.map(p=>({
+      label:p,
+      data:yrs.flatMap(yr=>(DATA.monthly_stacked[String(yr)]||{})[p]||new Array(12).fill(0)),
+      backgroundColor:PERSON_COLOR[p], borderRadius:2, stack:'s'
+    })).filter(d=>d.data.some(v=>v>0));
+  } else {
+    const stacks = DATA.monthly_stacked[String(yearForCharts)]||{};
+    ds = Object.keys(stacks).map(p=>({ label:p, data:stacks[p], backgroundColor:PERSON_COLOR[p], borderRadius:2, stack:'s' }));
+  }
+  mkChart('reachStacked',{ type:'bar', data:{ labels:allMonthLabels, datasets:ds },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}, tooltip:{...tip,callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
       scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}} } }});
 

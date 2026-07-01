@@ -1,9 +1,24 @@
 {
-  "period": "1. 2. 2025 – 30. 6. 2026",
+  "period": "1. 2. 2025 – 29. 6. 2026",
   "start_date": "Únor 2025",
   "facebook": {
     "handle": "grinexczechrepublic",
     "followers_now": 189,
+    "h1_2026": {
+      "period": "1. 1. 2026 – 29. 6. 2026",
+      "posts": 37,
+      "posts_breakdown": { "fotky": 19, "reels": 18, "pribehy": 1 },
+      "views": 167244,
+      "views_organic": 167244,
+      "views_paid": 0,
+      "viewers": 84148,
+      "views_3s": 70100,
+      "interactions": 377,
+      "watch_time": "12d 23h",
+      "format_views": { "reels": 165949, "fotka": 666, "vice_fotek": 608, "ostatni": 17, "text": 4 },
+      "format_interactions": { "reels": 373, "vice_fotek": 4 },
+      "note": "Všechna zobrazení jsou organická — žádná placená reklama. Vrchol v březnu díky virálním reels o švarcsystému."
+    },
     "history": [
       { "month": "2025-02", "label": "Úno '25", "full": "Únor 2025",      "posts": 8, "likes": 3 },
       { "month": "2025-03", "label": "Bře '25", "full": "Březen 2025",    "posts": 8, "likes": 9 },
@@ -28,7 +43,7 @@
         "month": "2026-03", "label": "Bře", "full": "Březen 2026",
         "views": 138900, "viewers": 70200, "interactions": 289,
         "visits": 858, "new_followers": 156,
-        "note": "Virální šíření videí o švarcsystému"
+        "note": "Virální šíření reels o švarcsystému"
       },
       {
         "month": "2026-04", "label": "Dub", "full": "Duben 2026",
@@ -43,21 +58,31 @@
       {
         "month": "2026-06", "label": "Čvn", "full": "Červen 2026",
         "views": null, "viewers": null, "interactions": null,
-        "visits": null, "new_followers": null,
-        "note": "Analytika bude k dispozici po uzavření měsíce"
+        "visits": null, "new_followers": null
       }
     ],
     "top_posts": [
-      { "title": "Přednáška",                           "date": "27. 03. 2025", "likes": 2, "comments": 0 },
-      { "title": "Digitalizace účetnictví",              "date": "16. 04. 2025", "likes": 2, "comments": 0 },
-      { "title": "Abstraktní umění — nová vizuální identita", "date": "06. 03. 2025", "likes": 1, "comments": 0 },
-      { "title": "Worklife balance",                    "date": "08. 03. 2025", "likes": 1, "comments": 0 },
-      { "title": "Zaměstnanecké akciové programy",      "date": "14. 03. 2025", "likes": 1, "comments": 0 }
+      { "title": "Stát ho trestá, firmy ho milují a nikdo ho zatíží…", "date": "20. 3. 2026", "views": 76000, "likes": 120, "comments": 6, "shares": 6 },
+      { "title": "Švarcsystém. Fenomén českého kapitalismu…",           "date": "19. 3. 2026", "views": 76000, "likes": 156, "comments": 33, "shares": 5 },
+      { "title": "Proč je #švarcsystém pro Česko takové téma…",        "date": "25. 3. 2026", "views": 4900,  "likes": 10,  "comments": 0,  "shares": 0 },
+      { "title": "Jaká řešení #Grinex pro své klienty nachází…",       "date": "4. 3. 2026",  "views": 1300,  "likes": 5,   "comments": 0,  "shares": 1 },
+      { "title": "Jak přitáhnout do vlastní země daňové…",             "date": "25. 6. 2026", "views": 1200,  "likes": 1,   "comments": 0,  "shares": 0 }
     ]
   },
   "instagram": {
     "handle": "grinexczechrepublic",
     "followers_now": 47,
+    "h1_2026": {
+      "period": "1. 1. 2026 – 29. 6. 2026",
+      "posts": 37,
+      "stories": 10,
+      "views": 6952,
+      "views_organic": 6952,
+      "views_paid": 0,
+      "reach": 1972,
+      "interactions": 194,
+      "note": "Zobrazení klesla o 39,6 % oproti H2/2025, ale dosah vzrostl o 715 % a interakce o 121 % — obsah se dostal mimo bublinu sledujících."
+    },
     "followers_history": [
       { "date": "2026-02-01", "total": 37 },
       { "date": "2026-03-31", "total": 47 },
@@ -88,20 +113,14 @@
       { "month": "2026-03", "label": "Bře", "full": "Březen 2026", "views": 1400, "reach": 476,  "interactions": 41, "visits": 37 },
       { "month": "2026-04", "label": "Dub", "full": "Duben 2026",  "views": 1700, "reach": 264,  "interactions": 12, "visits": 29 },
       { "month": "2026-05", "label": "Kvě", "full": "Květen 2026", "views": 1007, "reach": 284,  "interactions": 44, "visits": null },
-      { "month": "2026-06", "label": "Čvn", "full": "Červen 2026", "views": null, "reach": null, "interactions": null, "visits": null,
-        "note": "Analytika bude k dispozici po uzavření měsíce" }
+      { "month": "2026-06", "label": "Čvn", "full": "Červen 2026", "views": null, "reach": null, "interactions": null, "visits": null }
     ],
     "top_posts": [
-      { "title": "Zpět na startovní čáru",                   "date": "10. 04. 2025", "likes": 12, "comments": 0 },
-      { "title": "Nový design",                              "date": "12. 02. 2025", "likes": 10, "comments": 0 },
-      { "title": "Jaký máme v Grinex přístup",              "date": "12. 02. 2025", "likes": 8,  "comments": 0 },
-      { "title": "Doplatky za prodanou firmu v minulosti",   "date": "18. 02. 2025", "likes": 8,  "comments": 0 },
-      { "title": "Worklife balance",                         "date": "08. 03. 2025", "likes": 8,  "comments": 0 },
-      { "title": "Týmová porada",                            "date": "21. 05. 2025", "likes": 8,  "comments": 0 },
-      { "title": "Nové logo",                                "date": "20. 02. 2025", "likes": 7,  "comments": 0 },
-      { "title": "Naše služby — výpis",                     "date": "24. 02. 2025", "likes": 6,  "comments": 0 },
-      { "title": "Jsme tu pro vás",                          "date": "28. 03. 2025", "likes": 6,  "comments": 0 },
-      { "title": "Náš tým — Kamila Blechová",               "date": "09. 05. 2025", "likes": 6,  "comments": 0 }
+      { "title": "Proč je #švarcsystém pro Česko takové téma…",  "date": "25. 3. 2026",  "views": 4900, "likes": 10, "comments": 0, "shares": 0 },
+      { "title": "EET 2.0 se blíží! Jste připraveni? Návrat…",  "date": "29. 4. 2026",  "views": 1200, "likes": 6,  "comments": 0, "shares": 0 },
+      { "title": "Přestěhovat byznys do Dubaje a neplatit dan…", "date": "10. 6. 2026",  "views": 525,  "likes": 5,  "comments": 0, "shares": 2 },
+      { "title": "Co vám říká pojem kvalifikovaná opce?…",       "date": "25. 2. 2026",  "views": 273,  "likes": 5,  "comments": 0, "shares": 1 },
+      { "title": "Jakou ekonomiku neumí mezinárodní…",           "date": "16. 6. 2026",  "views": 250,  "likes": 5,  "comments": 0, "shares": 1 }
     ]
   }
 }

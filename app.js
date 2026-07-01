@@ -848,22 +848,21 @@ function renderMeta(){
   const ig = m.instagram;
   const dash = v => v!=null ? fmt(v) : '<span class="muted">—</span>';
 
-  // totals from full history
-  const totalFbPosts = fb.history.reduce((s,d)=>s+d.posts,0);
-  const totalIgPosts = ig.history.reduce((s,d)=>s+d.posts,0);
-  const totalIgLikes = ig.history.reduce((s,d)=>s+(d.likes||0),0);
+  // H1 2026 data (Meta Business Suite)
+  const fbH1 = fb.h1_2026 || {};
+  const igH1 = ig.h1_2026 || {};
   const totalFbViews = fb.monthly.reduce((s,d)=>s+(d.views||0),0);
   const totalIgViews = ig.monthly.reduce((s,d)=>s+(d.views||0),0);
   const totalFbInter = fb.monthly.reduce((s,d)=>s+(d.interactions||0),0);
   const totalIgInter = ig.monthly.reduce((s,d)=>s+(d.interactions||0),0);
 
-  // KPI tiles
+  // KPI tiles — H1 2026
   $('#metaKpiGrid').innerHTML = [
-    { label:'Publikováno od Února 2025', value:fmt(totalFbPosts+totalIgPosts), sub:'příspěvků celkem FB + IG' },
-    { label:'Facebook sledující',        value:fmt(fb.followers_now),           sub:'celkem · k 30. 6. 2026' },
-    { label:'Instagram sledující',       value:fmt(ig.followers_now),           sub:'celkem · k 30. 6. 2026' },
-    { label:'IG lajky (Úno–Kvě 2025)',  value:fmt(totalIgLikes),               sub:'kde jsou data k dispozici' },
-    { dark:true, label:'FB Dosah 2026', value:fmtMln(totalFbViews),            sub:'bře–čvn 2026 · org. dosah' },
+    { label:'FB zobrazení H1 2026',   value:fmtMln(fbH1.views||0),    sub:'100 % organické · žádná reklama' },
+    { label:'FB unikátní diváci',     value:fmtMln(fbH1.viewers||0),  sub:'H1 2026 · Meta Business Suite' },
+    { label:'FB interakce',           value:fmt(fbH1.interactions||0), sub:'H1 2026 · lajky + komentáře + sdílení' },
+    { label:'IG dosah H1 2026',       value:fmt(igH1.reach||0),        sub:'↑ +715 % oproti H2/2025' },
+    { dark:true, label:'IG interakce H1 2026', value:fmt(igH1.interactions||0), sub:'↑ +121 % oproti H2/2025' },
   ].map(t=>`<div class="kpi${t.dark?' kpi--dark':''}">
     <div class="kpi__label">${t.label}</div>
     <div class="kpi__value">${t.value}</div>
@@ -962,31 +961,74 @@ function renderMeta(){
     </tr></tfoot>
   </table>`;
 
-  // Top posts
-  const topTable = (posts, color, platform, hint) => {
-    if(!posts?.length) return '';
-    return `<div class="card">
-      <div class="card__head">
-        <div class="card__title" style="color:${color}">TOP příspěvky — ${platform}</div>
-        <div class="card__hint">${hint}</div>
+  // Formáty obsahu FB
+  const fmtBreakdown = fbH1.format_views;
+  if(fmtBreakdown){
+    const fmtData = [
+      { label:'Reels', views: fmtBreakdown.reels||0, inter: (fbH1.format_interactions?.reels||0), color: FB },
+      { label:'Fotka', views: fmtBreakdown.fotka||0, inter: 0, color: '#888' },
+      { label:'Více fotek', views: fmtBreakdown.vice_fotek||0, inter: (fbH1.format_interactions?.vice_fotek||0), color: '#aaa' },
+      { label:'Text / ostatní', views: (fmtBreakdown.text||0)+(fmtBreakdown.ostatni||0), inter: 0, color: '#ccc' },
+    ];
+    const maxV = Math.max(...fmtData.map(d=>d.views));
+    $('#metaTopPosts').innerHTML = `
+      <div class="card">
+        <div class="card__head">
+          <div class="card__title" style="color:${FB}">TOP příspěvky — Facebook</div>
+          <div class="card__hint">H1 2026 · dle zobrazení · Meta Business Suite</div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>#</th><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">Lajky</th><th class="num">Kom.</th><th class="num">Sdílení</th></tr></thead>
+          <tbody>${(fb.top_posts||[]).map((p,i)=>`<tr>
+            <td class="rank">${i+1}</td>
+            <td>${p.title}</td>
+            <td>${p.date}</td>
+            <td class="num" style="font-weight:${i<2?'700':'400'};color:${i<2?FB:'inherit'}">${fmtK(p.views)}</td>
+            <td class="num">${fmt(p.likes)}</td>
+            <td class="num">${fmt(p.comments)}</td>
+            <td class="num">${fmt(p.shares??0)}</td>
+          </tr>`).join('')}</tbody>
+        </table>
       </div>
-      <table class="tbl">
-        <thead><tr><th>#</th><th>Příspěvek</th><th>Datum</th><th class="num">Lajky</th></tr></thead>
-        <tbody>${posts.map((p,i)=>`<tr>
-          <td class="rank">${i+1}</td>
-          <td>${p.title}</td>
-          <td>${p.date}</td>
-          <td class="num">${fmt(p.likes)}</td>
-        </tr>`).join('')}</tbody>
-      </table>
-    </div>`;
-  };
-  $('#metaTopPosts').innerHTML =
-    topTable(fb.top_posts, FB, 'Facebook',  'dle lajků · Únor–Duben 2025') +
-    topTable(ig.top_posts, IG, 'Instagram', 'dle lajků · Únor–Květen 2025');
+      <div class="card">
+        <div class="card__head">
+          <div class="card__title" style="color:${IG}">TOP příspěvky — Instagram</div>
+          <div class="card__hint">H1 2026 · dle zobrazení · Meta Business Suite</div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>#</th><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">Lajky</th><th class="num">Kom.</th><th class="num">Sdílení</th></tr></thead>
+          <tbody>${(ig.top_posts||[]).map((p,i)=>`<tr>
+            <td class="rank">${i+1}</td>
+            <td>${p.title}</td>
+            <td>${p.date}</td>
+            <td class="num" style="font-weight:${i===0?'700':'400'};color:${i===0?IG:'inherit'}">${fmtK(p.views)}</td>
+            <td class="num">${fmt(p.likes)}</td>
+            <td class="num">${fmt(p.comments)}</td>
+            <td class="num">${fmt(p.shares??0)}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <div class="card__head">
+          <div class="card__title" style="color:${FB}">Formáty obsahu — Facebook H1 2026</div>
+          <div class="card__hint">Zobrazení dle formátu · reels dominují</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0">
+          ${fmtData.map(d=>`<div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px">
+              <span style="font-weight:600">${d.label}</span>
+              <span style="color:var(--text-muted)">${fmtK(d.views)} zobrazení${d.inter?` · ${d.inter} interakcí`:''}</span>
+            </div>
+            <div style="background:var(--border-default);border-radius:3px;height:8px">
+              <div style="background:${d.color};border-radius:3px;height:8px;width:${maxV?Math.round(d.views/maxV*100):0}%"></div>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>`;
+  }
 
   // Note
-  $('#metaNote').innerHTML = `💡 <strong>Příspěvky</strong>: počty z Content Plánu (Únor 2025 – Červen 2026). <strong>Lajky</strong>: sledovány Únor–Kvě 2025 (FB) a Únor–Kvě 2025 (IG) — od Června 2025 záznamy chybí. <strong>Dosah 2026</strong>: agregátní data ze screenshotů Meta Business Suite. <strong>Březen 2026: 138 900 FB zobrazení</strong> — virální šíření videí z podcastu o švarcsystému. Září a Říjen 2025: žádné příspěvky.`;
+  $('#metaNote').innerHTML = `💡 <strong>H1 2026 (1. 1.–29. 6. 2026)</strong>: data z Meta Business Suite. <strong>Reels táhnou FB dosah</strong> — 165 949 z 167 244 celkových zobrazení (99 %). Vše organické, žádná placená reklama. IG zobrazení klesla (−40 %), ale dosah +715 % ukazuje průnik mimo bublinu sledujících. Září a Říjen 2025: žádné příspěvky na FB ani IG.`;
 }
 
 // ---- SSI CARD ----

@@ -27,6 +27,7 @@ const SECTIONS = [
   { id:'meta',     icon:'9',  title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
   { id:'youtube',  icon:'10', title:'YouTube',            sub:'Grinex Czech Republic — výkon kanálu',         person:false, year:false },
   { id:'podcast',  icon:'11', title:'Podcast',            sub:'BARVY BYZNYSU — celkový zásah napříč platformami', person:false, year:false },
+  { id:'next',     icon:'12', title:'Doporučení do zbytku roku', sub:'Strategické kroky a témata pro H2 2026',    person:false, year:false },
 ];
 
 let DATA = null;
@@ -109,7 +110,8 @@ function render(){
 
   ({ overview:renderOverview, reach:renderReach, timing:renderTiming,
      network:renderNetwork, compare:renderCompare, top:renderTop, pipeline:renderPipeline,
-     profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube, podcast:renderPodcast })[sec.id]();
+     profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube, podcast:renderPodcast,
+     next:renderNext })[sec.id]();
 }
 
 const kkey = () => `${state.year}|${state.person}`;
@@ -1420,6 +1422,251 @@ function buildSsiCard(a, color, colorRgb){
       </div>
       ${trendHtml}
     </div>`;
+}
+
+/* =========================================================
+   12. DOPORUČENÍ DO ZBYTKU ROKU
+   ========================================================= */
+function renderNext(){
+  const GROUPS = [
+    {
+      id: 'obsah',
+      title: 'Obsahový marketing & Viditelnost',
+      color: '#22c55e',
+      icon: '✍️',
+      items: [
+        {
+          num: 1,
+          priority: 'high',
+          title: 'GEO / AI vyhledávání',
+          desc: 'Obsah optimalizovaný pro AI vyhledávače (Google AI Overview, Perplexity, ChatGPT) — nová disciplína SEO, kde Grinex může být první v oboru.',
+          bullets: [
+            'Publikace balíčku odborných článků na témata: švarcsystém, ESOP, DPH, EET 2.0, AI v účetnictví',
+            'Aktualizace analýzy klíčových slov — historická analýza existuje, zaslat k revizi a doplnění',
+            'Implementace klíčových slov na web: metadata, H-tagy, strukturovaná data, interní prolinkování',
+            'Propojení obsahu článků s příspěvky na LinkedIn a podcastem pro maximální pokrytí'
+          ],
+          tags: ['ON BOARD', 'Web']
+        },
+        {
+          num: 2,
+          priority: 'high',
+          title: 'Podcast BARVY BYZNYSU — hromadné natáčení',
+          desc: 'Pravidelnost bez pravidelného vypětí — natočit 5 epizod najednou a vydávat 1 měsíčně.',
+          bullets: [
+            'Natočit 5 epizod v jeden den → jedno odpoledne produkce místo 5 setkání',
+            'Vydávání: 1 epizoda měsíčně → srpen – prosinec 2026 vystaráno',
+            'Navrhovaná témata: AI v účetnictví, nový software, ESOP aktuálně, zaměstnanecké akcie, daňové tipy',
+            'Pravidelnost zvyšuje organický dosah a drží sledovanost na Spotify i YouTube'
+          ],
+          tags: ['Richard Jahoda', 'ON BOARD']
+        },
+        {
+          num: 3,
+          priority: 'medium',
+          title: 'Newsletter pro klienty',
+          desc: 'Pravidelná komunikace s existující klientelou buduje loajalitu a otevírá cross-sell příležitosti.',
+          bullets: [
+            'Obsah: co nového Grinex zvládl (AI integrace, nový software, výsledky klientů)',
+            'Novinky z oblasti daní a legislativy srozumitelně a rychle',
+            'Frekvence: 1× měsíčně stačí — krátký, čitelný formát (5 minut čtení)',
+            'Distribuce: email + LinkedIn newsletter (synergicky rozšiřuje dosah)'
+          ],
+          tags: ['Grinex', 'ON BOARD']
+        },
+        {
+          num: 4,
+          priority: 'medium',
+          title: 'Grinex Magazín',
+          desc: 'Půlroční nebo roční publikace jako positioning nástroj — existující obsah stačí, jen ho zkompilovat.',
+          bullets: [
+            'Materiál existuje: podcasty, příspěvky, grafiky od Merlina → žádná nová produkce nutná',
+            'Tematická čísla: švarcsystém, ESOP, AI, EET, nový software',
+            'Distribuce klientům — digitálně PDF nebo fyzicky (velký dojem, nízké náklady na tisk)',
+            'Launch: Q4 2026 jako dárek pro klienty + positioning "lídr oboru"'
+          ],
+          tags: ['ON BOARD', 'Merlin']
+        }
+      ]
+    },
+    {
+      id: 'software',
+      title: 'Nový účetní software — dvě roviny',
+      color: '#0062FF',
+      icon: '💻',
+      items: [
+        {
+          num: 5,
+          priority: 'high',
+          title: 'Akvizice nových klientů přes přednášky',
+          desc: 'Software jako vstupní bod — přednášky a webináře pro firmy a jejich majitele přirozeně vedou k poptávce.',
+          bullets: [
+            'Cílová skupina: majitelé firem, ředitelé, právníci — stávající Richardovo portfolio kontaktů',
+            'Formát: krátká přednáška nebo webinář (45–60 min) na téma "AI mění účetnictví"',
+            'Praktická ukázka softwaru → přirozená poptávka bez tvrdého prodeje',
+            'Propojit s business snídaněmi (bod 9) pro maximální efekt'
+          ],
+          tags: ['Richard Jahoda', 'ON BOARD']
+        },
+        {
+          num: 6,
+          priority: 'high',
+          title: 'Spolupráce s účetními firmami',
+          desc: 'Software jako B2B produkt — jiné účetní firmy jako distributoři nebo dlouhodobí partneři.',
+          bullets: [
+            'Richard Jahoda ml. → budovat síť majitelů účetních firem (vzor: přístup jako ke kontaktu "Vite")',
+            'Kamila Blechová → mzdová složka softwaru — personalisté a mzdové účetní jako přirození zákazníci',
+            'Lenka Nečasová → podobný profil jako Kamila → agenda zpracování mezd a HR',
+            'Synergie: jedna platforma, tři ambasadoři, tři různé cílové skupiny'
+          ],
+          tags: ['Richard ml.', 'Kamila', 'Lenka']
+        }
+      ]
+    },
+    {
+      id: 'linkedin',
+      title: 'LinkedIn & Business Networking',
+      color: '#0A66C2',
+      icon: '🤝',
+      items: [
+        {
+          num: 7,
+          priority: 'high',
+          title: 'LinkedIn — Richard Jahoda ml.',
+          desc: 'Cílená síťovací strategie fokusovaná na majitele účetních firem — léto je ideální čas bez prodejního tlaku.',
+          bullets: [
+            'Fokus: majitelé a partneři účetních firem (ne zaměstnanci) — rozhodovatelé pro B2B software',
+            'Léto = čas budovat vztahy, ne prodávat — nejdřív síť, pak obchod',
+            'Část účetních kontaktů v síti již existuje → zaslat personalizované zprávy s hodnotou',
+            'Vzor přístupu "Vite": přátelský, odborný, bez okamžitého pitch'
+          ],
+          tags: ['Richard Jahoda ml.']
+        },
+        {
+          num: 8,
+          priority: 'medium',
+          title: 'LinkedIn — Kamila & Lenka',
+          desc: 'Oslovení personálních a mzdových účetních jako specifická B2B skupina pro nový software.',
+          bullets: [
+            'Profil zákazníka: personalisté, mzdové účetní ve středních a velkých firmách',
+            'Obsah zaměřený na mzdovou agendu, efektivitu, chyby v HR agendě a AI asistenci',
+            'Propojení LinkedIn strategie s produktovým pitchem softwaru — Kamila = mzdová expertka',
+            'Synergicky posílit kooperaci Kamila + Lenka při vzdělávacích příspěvcích'
+          ],
+          tags: ['Kamila', 'Lenka']
+        },
+        {
+          num: 9,
+          priority: 'medium',
+          title: 'Business eventy — tematické snídaně',
+
+          desc: 'Komunitní setkání přinášejí vztahy a zakázky organicky — žádný tvrdý prodej.',
+          bullets: [
+            'Formát: business snídaně (7:30–9:00) na konkrétní horké téma (švarcsystém, AI, nový software)',
+            'Vedené Richardem Jahodou — přirozená autorita, lidé přijdou kvůli obsahu',
+            'Pozvánky: LinkedIn spojení + stávající klienti → smíšená skupina = networking value',
+            'Výstup: vztahy → doporučení → zakázky — bez prodejního tlaku'
+          ],
+          tags: ['Richard Jahoda', 'ON BOARD']
+        }
+      ]
+    },
+    {
+      id: 'akv',
+      title: 'Marketing & Akvizice',
+      color: '#f97316',
+      icon: '📣',
+      items: [
+        {
+          num: 10,
+          priority: 'high',
+          title: 'Remarketing & placená reklama',
+          desc: 'Warm audience existuje — remarketing ji aktivuje s minimálním nákladem a snižuje závislost na osobním outreachu.',
+          bullets: [
+            'Existující warm audience: návštěvníci webu + LinkedIn síť Richarda (tisíce lidí, kteří Grinex znají)',
+            'Minimum viable akce: spustit Meta nebo Google retargeting → Grinex se "sleduje" bez nutnosti znovu oslovovat',
+            'Cíl: klienti se sami vrátí, nebo doporučí — méně závislé na Richardově aktivitě',
+            'Možné rozšíření: LinkedIn Ads (retargeting firemní sítě), look-alike audience z existujících klientů'
+          ],
+          tags: ['ON BOARD']
+        },
+        {
+          num: 11,
+          priority: 'medium',
+          title: 'HR marketing & imageové video',
+          desc: 'Akvizice talentů s důrazem na brand zaměstnavatele — jedno video poslouží pro HR i klientský marketing.',
+          bullets: [
+            'LinkedIn HR inzeráty: "Staňte se účetní u lídra trhu" — rozšířit i na Jobs.cz a Profesia',
+            'Imageové video: klíčový chybějící prvek — ukázat kulturu firmy, tým, zázemí, způsob práce',
+            'Video délka 60–90 sekund stačí pro LinkedIn, YouTube a web',
+            'Jeden výstup, více použití: HR nábor + klientský brand + podkast promo'
+          ],
+          tags: ['Grinex', 'ON BOARD']
+        },
+        {
+          num: 12,
+          priority: 'medium',
+          title: 'Referral program pro klienty',
+          desc: 'Spokojení klienti jsou nejdůvěryhodnějším akvizičním kanálem — systém odměn tuto energii zaktivuje.',
+          bullets: [
+            'Odměna za doporučení: provize z první faktury nového klienta, nebo volné hodiny konzultace',
+            'Oslovit osobně klienty, o nichž Grinex ví, že mají konexe ve firmách',
+            'Pasivní kanál — klienti doporučují průběžně, bez nutnosti aktivního prodeje',
+            'Komunikace přes newsletter, osobní zprávu nebo při výroční schůzce'
+          ],
+          tags: ['Grinex', 'Richard Jahoda']
+        }
+      ]
+    }
+  ];
+
+  const priorityLabel = p => p === 'high'
+    ? `<span class="rec-priority rec-priority--high">Priorita</span>`
+    : `<span class="rec-priority rec-priority--med">Do konce roku</span>`;
+
+  const tagHtml = tags => tags.map(t => `<span class="rec-tag">${t}</span>`).join('');
+
+  const cardHtml = (item, color) => `
+    <div class="rec-card" style="--rec-color:${color}">
+      <div class="rec-card__top">
+        <div class="rec-card__num">${item.num}</div>
+        ${priorityLabel(item.priority)}
+      </div>
+      <div class="rec-card__title">${item.title}</div>
+      <div class="rec-card__desc">${item.desc}</div>
+      <ul class="rec-card__bullets">
+        ${item.bullets.map(b=>`<li>${b}</li>`).join('')}
+      </ul>
+      <div class="rec-card__footer">
+        ${tagHtml(item.tags)}
+      </div>
+    </div>`;
+
+  const groupHtml = g => `
+    <div class="rec-group">
+      <div class="rec-group__head" style="--rec-color:${g.color}">
+        <span class="rec-group__icon">${g.icon}</span>
+        <span class="rec-group__title">${g.title}</span>
+      </div>
+      <div class="rec-grid">
+        ${g.items.map(item => cardHtml(item, g.color)).join('')}
+      </div>
+    </div>`;
+
+  $('#nextContent').innerHTML = `
+    <div class="rec-intro card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <div style="font-family:'Montserrat';font-weight:700;font-size:16px;color:#1c1f22">Strategické kroky pro H2 2026</div>
+        <span class="rec-priority rec-priority--high" style="font-size:10px">12 doporučení</span>
+      </div>
+      <p style="color:#555;font-size:13px;line-height:1.6;margin:0">
+        Na základě výsledků z první poloviny roku 2026 a aktuální pozice Grinexu na trhu
+        jsou níže seřazeny konkrétní kroky pro zbývající měsíce. Každá oblast je doplněna
+        kontextem a konkrétními akcemi. <strong>Priorita</strong> = doporučujeme zahájit co nejdříve.
+      </p>
+    </div>
+    ${GROUPS.map(groupHtml).join('')}
+  `;
 }
 
 init();

@@ -206,6 +206,7 @@ h1,h2,h3,h4 { font-family:var(--font-heading); font-weight:var(--fw-bold);
 
 .section-gap { margin-top:var(--space-6); }
 .muted { color:var(--text-muted); }
+.muted-row td { color:var(--text-muted); opacity:0.5; }
 
 /* ---- Profily ambasadorů ---- */
 .prof-header {

@@ -166,6 +166,7 @@ def build(posts, status_counter, total_prepared, net):
 
     kpis = {}
     monthly = {}        # dosah po měsících
+    monthly_posts = {}  # počty příspěvků po měsících
     monthly_stacked = {}  # dosah po měsících rozdělený na osoby
     for yr in (["all"] + years):
         for person in persons_in_posts:
@@ -184,9 +185,12 @@ def build(posts, status_counter, total_prepared, net):
             # měsíční řada (jen pro konkrétní rok, ne all)
             if yr != "all":
                 m_reach = [0] * 12
+                m_posts = [0] * 12
                 for p in sub:
                     m_reach[p["date"].month - 1] += p["imp"]
+                    m_posts[p["date"].month - 1] += 1
                 monthly[key] = m_reach
+                monthly_posts[key] = m_posts
 
     # stacked po měsících (rok × {osoba: [12]})
     for yr in years:
@@ -324,6 +328,7 @@ def build(posts, status_counter, total_prepared, net):
         },
         "kpis": kpis,
         "monthly": monthly,
+        "monthly_posts": monthly_posts,
         "monthly_stacked": monthly_stacked,
         "cumulative": cumulative,
         "yearly": yearly,

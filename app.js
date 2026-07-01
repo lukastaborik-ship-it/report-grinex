@@ -122,13 +122,32 @@ const prevYearKey = () => {
 // ---- 1. OVERVIEW ----
 function renderOverview(){
   const k = DATA.kpis[kkey()] || {reach:0,posts:0,avg:0,engagement:0};
-  const pk = prevYearKey() ? DATA.kpis[prevYearKey()] : null;
+
+  // Porovnání se stejným obdobím předchozího roku (ne celý rok)
+  const spPrev = (() => {
+    if(state.year==='all') return null;
+    const curY = Number(state.year);
+    const yi = DATA.meta.years.indexOf(curY);
+    if(yi<=0) return null;
+    const prevY = DATA.meta.years[yi-1];
+    // Kolik měsíců má aktuální rok data?
+    const curM = DATA.monthly[`${curY}|${state.person}`] || new Array(12).fill(0);
+    const nMo  = curM.reduce((last,v,i)=>v>0?i+1:last, 0) || 6;
+    // Dosah za stejné měsíce předchozího roku
+    const prevM = DATA.monthly[`${prevY}|${state.person}`] || new Array(12).fill(0);
+    const reach = prevM.slice(0,nMo).reduce((s,v)=>s+v,0);
+    // Počty příspěvků za stejné měsíce předchozího roku
+    const prevPM = (DATA.monthly_posts||{})[`${prevY}|${state.person}`] || new Array(12).fill(0);
+    const posts  = prevPM.slice(0,nMo).reduce((s,v)=>s+v,0);
+    const avg    = posts&&reach ? Math.round(reach/posts) : 0;
+    const MO = ['led','úno','bře','dub','kvě','čvn','čvc','srp','zář','říj','lis','pro'];
+    return { reach, posts, avg, label:`jan–${MO[nMo-1]} ${prevY}` };
+  })();
+
   const delta = (cur,prev) => {
-    if(!pk || !prev) return '';
+    if(!spPrev||!prev) return '';
     const d = Math.round((cur-prev)/prev*100);
-    const cls = d>=0?'up':'down';
-    const arrow = d>=0?'▲':'▼';
-    return `<span class="kpi__delta ${cls}">${arrow} ${Math.abs(d)} %</span><span>vs ${DATA.meta.years[DATA.meta.years.indexOf(Number(state.year))-1]}</span>`;
+    return `<span class="kpi__delta ${d>=0?'up':'down'}">${d>=0?'▲':'▼'} ${Math.abs(d)} %</span><span>vs ${spPrev.label}</span>`;
   };
   // síť LinkedIn — sledující ke konci zvoleného roku (síť roste v čase)
   const netUpTo = (person) => {
@@ -147,9 +166,9 @@ function renderOverview(){
     : `Sledující na LinkedIn (k ${lastDate?fmtDate(lastDate):'konci '+state.year})`;
 
   const tiles = [
-    { dark:true, label:'Celkový dosah', value:fmt(k.reach), sub:delta(k.reach, pk&&pk.reach) || 'zobrazení příspěvků' },
-    { label:'Publikované příspěvky', value:fmt(k.posts), sub:delta(k.posts, pk&&pk.posts) || 'za období' },
-    { label:'Průměrný dosah / příspěvek', value:fmt(k.avg), sub:delta(k.avg, pk&&pk.avg) || 'zobrazení' },
+    { dark:true, label:'Celkový dosah', value:fmt(k.reach), sub:delta(k.reach, spPrev&&spPrev.reach) || 'zobrazení příspěvků' },
+    { label:'Publikované příspěvky', value:fmt(k.posts), sub:delta(k.posts, spPrev&&spPrev.posts) || 'za období' },
+    { label:'Průměrný dosah / příspěvek', value:fmt(k.avg), sub:delta(k.avg, spPrev&&spPrev.avg) || 'zobrazení' },
     { label:'Míra zapojení', value:(k.engagement||0).toLocaleString('cs-CZ')+' %', sub:'lajky + komentáře / dosah' },
     { label:follLabel, value:fmt(follNow), sub:`<span class="kpi__delta up">▲ +${fmt(follGain)}</span><span>od začátku</span>` },
   ];
@@ -255,17 +274,34 @@ function renderReach(){
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}, tooltip:{...tip,callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
       scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}} } }});
 
+  // Srovnání let — jen stejné měsíce (fair porovnání neúplného roku)
+  const lastY   = yrs[yrs.length - 1];
+  const lastYM  = DATA.monthly[`${lastY}|all`] || new Array(12).fill(0);
+  const nMoSP   = lastYM.reduce((last,v,i)=>v>0?i+1:last, 0) || 6;
+  const MO_CZ   = ['led','úno','bře','dub','kvě','čvn','čvc','srp','zář','říj','lis','pro'];
+  // Součet dosahu za stejné období (nMoSP měsíců) per ambassador per year
+  const spYearly = {};
+  for(const yr of yrs){
+    spYearly[yr] = {};
+    const stacked = DATA.monthly_stacked[String(yr)] || {};
+    for(const [person, mArr] of Object.entries(stacked)){
+      spYearly[yr][person] = mArr.slice(0, nMoSP).reduce((s,v)=>s+v, 0);
+    }
+  }
   const ambassadors = ['Richard Jahoda', 'Richard Jahoda ml.', 'Kamila Blechová', 'Lenka Nečasová'];
   const ambColors   = [C.teal, C.koromiko, C.salmon, C.orchid];
-  // Only show datasets that have data
   const yearlyDatasets = ambassadors
-    .map((amb, i) => ({ label:amb, data:yrs.map(y=>(DATA.yearly[y]||{})[amb]||0), backgroundColor:ambColors[i], borderRadius:3, stack:'s' }))
-    .filter(ds => ds.data.some(v=>v>0));
+    .map((amb,i)=>({ label:amb, data:yrs.map(y=>(spYearly[y]||{})[amb]||0), backgroundColor:ambColors[i], borderRadius:3, stack:'s' }))
+    .filter(ds=>ds.data.some(v=>v>0));
   const lastDsIdx = yearlyDatasets.length - 1;
-  mkChart('reachYearly',{ type:'bar', data:{ labels:yrs.map(String),
-    datasets: yearlyDatasets },
+  // Popisky os: "2025 (jan–čvn)" a "2026 (jan–čvn)"
+  const yrLabels = yrs.map(y=>`${y} (jan–${MO_CZ[nMoSP-1]})`);
+  if($('#reachYearlyHint')) $('#reachYearlyHint').textContent = `Jan–${MO_CZ[nMoSP-1].charAt(0).toUpperCase()+MO_CZ[nMoSP-1].slice(1)} · stejné období obou let`;
+  mkChart('reachYearly',{ type:'bar', data:{ labels:yrLabels, datasets:yearlyDatasets },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}, tooltip:{...tip,callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}},
-      datalabels:{display:ctx=>ctx.datasetIndex===lastDsIdx, anchor:'end',align:'end',formatter:(v,ctx)=>{const i=ctx.dataIndex;const a=DATA.yearly[yrs[i]]||{};return fmtMln(Object.values(a).reduce((s,x)=>s+x,0));},font:{family:"'Montserrat'",weight:'700',size:11},color:C.black}},
+      datalabels:{display:ctx=>ctx.datasetIndex===lastDsIdx, anchor:'end',align:'end',
+        formatter:(v,ctx)=>{ const yr=yrs[ctx.dataIndex]; return fmtMln(Object.values(spYearly[yr]||{}).reduce((s,x)=>s+x,0)); },
+        font:{family:"'Montserrat'",weight:'700',size:11},color:C.black}},
       scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}} } }});
 }
 

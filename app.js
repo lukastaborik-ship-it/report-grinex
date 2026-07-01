@@ -253,8 +253,8 @@ function renderTiming(){
   if(!t){ return; }
   const colorByVal = (arr,max) => arr.map(v=> `rgba(95,140,148,${0.25+0.75*(v/max||0)})`);
 
-  // Sloty s méně než 5 příspěvky jsou statisticky nespolehlivé — nezobrazujeme je
-  const MIN_N = 5;
+  // Zobrazujeme i sloty s 1 příspěvkem — tooltip upozorní na "malý vzorek"
+  const MIN_N = 1;
 
   const days  = t.day.filter(d => d.n >= MIN_N);
   const hours = t.hour.filter(h => h.n >= MIN_N);
@@ -287,19 +287,20 @@ function renderTiming(){
       tooltip:{...tip,callbacks:{label:c=>fmt(c.parsed.y)+' prům. dosah',afterLabel:c=>`${t.month[c.dataIndex].n} příspěvků`}}},
       scales:baseScales() }});
 
-  // heatmap — jen buňky s alespoň 2 příspěvky (n=1 je šum)
-  renderHeatmap(t.heatmap.filter(c=>c.n >= 2));
+  // heatmap — všechny buňky s alespoň 1 příspěvkem
+  renderHeatmap(t.heatmap.filter(c=>c.n >= 1));
 
   // note
   const bestDay = [...days].sort((a,b)=>b.avg-a.avg)[0];
-  const bestH   = [...hours].filter(h=>!h.low).sort((a,b)=>b.avg-a.avg)[0];
+  const bestH   = [...hours].sort((a,b)=>b.avg-a.avg)[0];
+  const lowNote = bestDay?.low || bestH?.low ? ' <span class="lowsample">Malý vzorek — data orientační.</span>' : '';
   const outlierNote = (t.outliers_excluded > 0)
     ? ` <span class="lowsample">Vyloučeno ${t.outliers_excluded} příspěvků nad ${fmtK(t.outlier_cap)}.</span>`
     : '';
   $('#timeNote').innerHTML = bestDay
     ? `💡 Nejlépe vychází <b>${bestDay.label}</b> (prům. ${fmt(bestDay.avg)} zobrazení)` +
       (bestH?` a čas kolem <b>${bestH.hour}:00</b> (prům. ${fmt(bestH.avg)}).`:'.') +
-      ` <span class="lowsample">Zobrazeny jen sloty s min. 5 příspěvky.${outlierNote}</span>`
+      lowNote + outlierNote
     : `<span class="lowsample">Pro tento filtr není dostatek dat — zvolte širší rozsah.</span>`;
 }
 

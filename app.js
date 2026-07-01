@@ -1072,7 +1072,7 @@ function renderPodcast(){
   const totalPlays     = sp.plays + yt.plays;
   const totalWatchH    = sp.watch_time_hours + yt.watch_time_hours;
   const totalWatchLbl  = `${Math.floor(totalWatchH)}h ${Math.round((totalWatchH % 1)*60)}m`;
-  const ytPromoViews   = yt.promo_videos.reduce((s,v)=>s+v.views, 0);
+  const ytOrgViews     = yt.yt_videos.reduce((s,v)=>s+v.views, 0);
   const metaViews      = p.meta_posts.reduce((s,v)=>s+v.views, 0);
 
   // KPI tiles
@@ -1081,8 +1081,8 @@ function renderPodcast(){
     { label:'Unikátní posluchači', value:fmt(sp.audience), sub:'Spotify · H1 2026' },
     { label:'Celková doba poslechu', value:totalWatchLbl, sub:`Spotify ${sp.watch_time_label} · YouTube ${yt.watch_time_hours}h` },
     { label:'Ø délka epizody', value:sp.avg_duration_label, sub:'Spotify · průměrná délka přehrávání' },
-    { label:'Sociální dosah (Meta)', value:fmtK(metaViews), sub:'FB příspěvky o podcastu · organicky' },
-    { label:'YT video dosah (promo)', value:fmtK(ytPromoViews), sub:'YouTube klipy o BARVY BYZNYSU' },
+    { label:'Organický dosah Meta', value:fmtK(metaViews), sub:'FB + IG příspěvky o podcastu · bez reklamy' },
+    { label:'YT organický dosah', value:fmtK(ytOrgViews), sub:'YouTube klipy o BARVY BYZNYSU · bez reklamy' },
   ].map(t=>`<div class="kpi${t.dark?' kpi--dark':''}">
     <div class="kpi__label">${t.label}</div>
     <div class="kpi__value">${t.value}</div>
@@ -1161,38 +1161,59 @@ function renderPodcast(){
     </div>`).join('')}
   </div>`;
 
-  // Social reach: Meta + YT promo
-  const metaPost = p.meta_posts[0];
+  // Social reach: Meta (FB+IG) + YT organic
+  const fbPosts = p.meta_posts.filter(x=>x.platform==='Facebook');
+  const igPosts = p.meta_posts.filter(x=>x.platform==='Instagram');
+  const fbTotal = fbPosts.reduce((s,x)=>s+x.views, 0);
+  const igTotal = igPosts.reduce((s,x)=>s+x.views, 0);
   $('#podSocialReach').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
       <div>
-        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${FB};margin-bottom:.75rem">Facebook</div>
+        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${FB};margin-bottom:.75rem">
+          Facebook · organicky &nbsp;<span style="font-weight:400;opacity:.6">${fmtK(fbTotal)} zobrazení celkem</span>
+        </div>
         <table class="tbl" style="font-size:13px">
-          <thead><tr><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">Lajky</th><th class="num">Sdílení</th></tr></thead>
-          <tbody>${p.meta_posts.map(mp=>`<tr>
+          <thead><tr><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th><th class="num">❤</th></tr></thead>
+          <tbody>${fbPosts.map(mp=>`<tr>
             <td>${mp.title}</td><td style="white-space:nowrap;opacity:.6">${mp.date}</td>
-            <td class="num" style="font-weight:700;color:${FB}">${fmtK(mp.views)}</td>
-            <td class="num">${mp.likes}</td><td class="num">${mp.shares}</td>
-          </tr>`).join('')}</tbody>
+            <td class="num" style="font-weight:${mp.views>=10000?'700':'400'};color:${mp.views>=10000?FB:'inherit'}">${fmtK(mp.views)}</td>
+            <td class="num">${mp.likes}</td>
+          </tr>`).join('')}
+          </tbody>
+          <tfoot><tr style="font-weight:700;border-top:2px solid var(--border-default)">
+            <td>Celkem FB</td><td></td><td class="num" style="color:${FB}">${fmtK(fbTotal)}</td><td></td>
+          </tr></tfoot>
         </table>
+        ${igPosts.length ? `<div style="margin-top:1rem;font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#E1306C;margin-bottom:.5rem">Instagram · organicky</div>
+        <table class="tbl" style="font-size:13px">
+          <thead><tr><th>Příspěvek</th><th>Datum</th><th class="num">Zobrazení</th></tr></thead>
+          <tbody>${igPosts.map(mp=>`<tr>
+            <td>${mp.title}</td><td style="white-space:nowrap;opacity:.6">${mp.date}</td>
+            <td class="num">${fmtK(mp.views)}</td>
+          </tr>`).join('')}</tbody>
+        </table>` : ''}
+        <div style="margin-top:.75rem;font-size:12px;opacity:.6">Veškerý dosah je organický — žádná placená reklama</div>
       </div>
       <div>
-        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${YT};margin-bottom:.75rem">YouTube — promo klipy</div>
+        <div style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:${YT};margin-bottom:.75rem">
+          YouTube · organické klipy &nbsp;<span style="font-weight:400;opacity:.6">${fmtK(ytOrgViews)} zobrazení celkem</span>
+        </div>
         <table class="tbl" style="font-size:13px">
           <thead><tr><th>Video</th><th>Datum</th><th class="num">Zobrazení</th></tr></thead>
-          <tbody>${yt.promo_videos.map(v=>`<tr>
+          <tbody>${yt.yt_videos.map(v=>`<tr>
             <td>${v.title}</td><td style="white-space:nowrap;opacity:.6">${v.date}</td>
             <td class="num" style="font-weight:${v.views>5000?'700':'400'};color:${v.views>5000?YT:'inherit'}">${fmtK(v.views)}</td>
           </tr>`).join('')}</tbody>
           <tfoot><tr style="font-weight:700;border-top:2px solid var(--border-default)">
-            <td>Celkem</td><td></td><td class="num">${fmtK(ytPromoViews)}</td>
+            <td>Celkem YT</td><td></td><td class="num" style="color:${YT}">${fmtK(ytOrgViews)}</td>
           </tr></tfoot>
         </table>
+        <div style="margin-top:.75rem;font-size:12px;opacity:.6">Veškerý dosah je organický — žádná placená reklama</div>
       </div>
     </div>`;
 
   // Note
-  $('#podNote').innerHTML = `💡 <strong>BARVY BYZNYSU · H1 2026</strong>: Celkem ${fmt(totalPlays)} přehrání podcastu napříč platformami (Spotify ${sp.plays} + YouTube ${yt.plays}), ${totalWatchLbl} hodin poslechu. Nejsilnější epizoda: <strong>Švarcsystém</strong> (8h 36m doby poslechu na Spotify). Sociální dosah propagace podcastu: ${fmtK(metaViews)} zobrazení na Facebooku + ${fmtK(ytPromoViews)} na YouTube video klipcích. Jádrové publikum: <strong>35–44 let (47 %)</strong>, převažují muži. Hlavní platformy: Spotify ${sp.platforms[0].pct} %, Apple Podcasts ${sp.platforms[1].pct} %.`;
+  $('#podNote').innerHTML = `💡 <strong>BARVY BYZNYSU · H1 2026</strong>: Celkem ${fmt(totalPlays)} přehrání podcastu napříč platformami (Spotify ${sp.plays} + YouTube ${yt.plays}), ${totalWatchLbl} celkové doby poslechu. Nejsilnější epizoda: <strong>Švarcsystém</strong> (8h 36m doby poslechu na Spotify). Organický dosah propagace podcastu: Meta ${fmtK(metaViews)} zobrazení (FB ${fmtK(fbTotal)} + IG ${fmtK(igTotal)}) + YouTube klipy ${fmtK(ytOrgViews)} — vše bez placené reklamy. Jádrové publikum: <strong>35–44 let (47 %)</strong>, převažují muži, 79 % ČR. Hlavní platformy: Spotify ${sp.platforms[0].pct} %, Apple Podcasts ${sp.platforms[1].pct} %.`;
 }
 
 // ---- 10. YOUTUBE ----

@@ -43,7 +43,7 @@
     "period": "H1 2026",
     "plays": 546,
     "watch_time_hours": 58.2,
-    "promo_videos": [
+    "yt_videos": [
       { "title": "Nový díl podcastu BARVY BYZNYSU | ŠVARCSYSTÉM #GRINEX", "date": "19. 3. 2026", "views": 17541 },
       { "title": "Druhá epizoda BARVY BYZNYSU je online ‼️",               "date": "4. 3. 2026",  "views": 1304  },
       { "title": "První epizoda #BARVYBYZNYSU",                            "date": "25. 2. 2026", "views": 1291  },
@@ -54,13 +54,39 @@
   "meta_posts": [
     {
       "platform": "Facebook",
-      "title": "Nový díl podcastu BARVY BYZNYSU | ŠVARCSYSTÉM #GRINEX",
-      "date": "19. 3. 2026",
+      "title": "Stát ho trestá, firmy ho milují a nikdo ho zatíží…",
+      "date": "20. 3. 2026",
       "views": 76000,
       "likes": 120,
       "comments": 6,
-      "shares": 6,
-      "note": "Organický virální dosah — top FB příspěvek H1 2026"
+      "shares": 6
+    },
+    {
+      "platform": "Facebook",
+      "title": "Švarcsystém. Fenomén českého kapitalismu…",
+      "date": "19. 3. 2026",
+      "views": 76000,
+      "likes": 156,
+      "comments": 33,
+      "shares": 5
+    },
+    {
+      "platform": "Facebook",
+      "title": "Proč je #švarcsystém pro Česko takové téma…",
+      "date": "25. 3. 2026",
+      "views": 4900,
+      "likes": 10,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "platform": "Instagram",
+      "title": "Proč je #švarcsystém pro Česko takové téma…",
+      "date": "25. 3. 2026",
+      "views": 4900,
+      "likes": 10,
+      "comments": 0,
+      "shares": 0
     }
   ]
 }

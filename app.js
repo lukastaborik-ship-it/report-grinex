@@ -27,7 +27,8 @@ const SECTIONS = [
   { id:'meta',     icon:'9',  title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
   { id:'youtube',  icon:'10', title:'YouTube',            sub:'Grinex Czech Republic — výkon kanálu',         person:false, year:false },
   { id:'podcast',  icon:'11', title:'Podcast',            sub:'BARVY BYZNYSU — celkový zásah napříč platformami', person:false, year:false },
-  { id:'next',     icon:'12', title:'Doporučení do zbytku roku', sub:'Strategické kroky a témata pro H2 2026',    person:false, year:false },
+  { id:'xtwitter', icon:'X',  title:'X (Twitter)',        sub:'Richard Jahoda · @richard_jahoda · H1 2026',        person:false, year:false },
+  { id:'next',     icon:'13', title:'Doporučení do zbytku roku', sub:'Strategické kroky a témata pro H2 2026',    person:false, year:false },
 ];
 
 let DATA = null;
@@ -111,7 +112,7 @@ function render(){
   ({ overview:renderOverview, reach:renderReach, timing:renderTiming,
      network:renderNetwork, compare:renderCompare, top:renderTop, pipeline:renderPipeline,
      profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube, podcast:renderPodcast,
-     next:renderNext })[sec.id]();
+     xtwitter:renderXTwitter, next:renderNext })[sec.id]();
 }
 
 const kkey = () => `${state.year}|${state.person}`;
@@ -1425,7 +1426,90 @@ function buildSsiCard(a, color, colorRgb){
 }
 
 /* =========================================================
-   12. DOPORUČENÍ DO ZBYTKU ROKU
+   12. X (TWITTER)
+   ========================================================= */
+function renderXTwitter(){
+  const x = DATA.x_analytics;
+  if(!x){ $('#xKpiGrid').innerHTML='<p style="color:#888">Data X nenalezena.</p>'; return; }
+
+  const threads = x.threads || [];
+  const highlighted = threads.find(t=>t.highlight);
+
+  // KPI tiles
+  const kpis = [
+    { label:'Celkem zobrazení', value: fmt(x.total_impressions), sub:'H1 2026 · všechny tweety' },
+    { label:'Threadů / témat',  value: x.total_threads,          sub:`${x.total_tweets} jednotlivých tweetů` },
+    { label:'Nejlepší tweet',   value: fmt(x.best_tweet_impressions) + ' zobrazení', sub: highlighted ? highlighted.topic : '' },
+    { label:'Účet',             value: x.account,                sub: x.note_start },
+  ];
+  $('#xKpiGrid').innerHTML = kpis.map(k=>`
+    <div class="kpi-card">
+      <div class="kpi__label">${k.label}</div>
+      <div class="kpi__value">${k.value}</div>
+      <div class="kpi__sub">${k.sub}</div>
+    </div>`).join('');
+
+  // Bar chart — impressions per thread
+  const labels = threads.map(t => {
+    const parts = t.topic.split(' — ');
+    return parts[0].length > 22 ? parts[0].slice(0,22)+'…' : parts[0];
+  });
+  const values = threads.map(t => t.impressions);
+  const colors = threads.map(t => t.highlight ? '#0062FF' : 'rgba(0,98,255,0.35)');
+
+  mkChart('xThreadChart','bar',{
+    labels,
+    datasets:[{ label:'Zobrazení (thread)', data:values, backgroundColor:colors,
+      borderRadius:6, borderSkipped:false }]
+  },{
+    plugins:{
+      datalabels:{
+        anchor:'end', align:'top', formatter:v=>fmt(v),
+        font:{family:'Montserrat',weight:'700',size:11},
+        color: ctx => threads[ctx.dataIndex].highlight ? '#0062FF' : '#666'
+      },
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx=>`Zobrazení: ${fmt(ctx.parsed.y)}` } }
+    },
+    ...baseScales({ y:{ title:'Zobrazení', beginAtZero:true, grid:{color:'rgba(0,0,0,0.05)'} } })
+  });
+
+  // Thread table
+  const rows = threads.map(t=>`
+    <tr${t.highlight?' class="x-row--highlight"':''}>
+      <td>${t.date}</td>
+      <td>${t.topic}${t.highlight?' <span class="x-badge">Nejlepší</span>':''}</td>
+      <td style="text-align:center">${t.tweets}</td>
+      <td style="text-align:right;font-weight:${t.highlight?'700':'400'};color:${t.highlight?'#0062FF':'inherit'}">${fmt(t.impressions)}</td>
+      <td style="text-align:right">${fmt(t.top_tweet_impressions)}</td>
+    </tr>`).join('');
+
+  $('#xThreadTable').innerHTML = `
+    <table class="tbl">
+      <thead><tr>
+        <th>Datum</th><th>Téma</th>
+        <th style="text-align:center">Tweety</th>
+        <th style="text-align:right">Zobrazení (thread)</th>
+        <th style="text-align:right">Nejlepší tweet</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr>
+        <td colspan="2"><strong>Celkem</strong></td>
+        <td style="text-align:center"><strong>${x.total_tweets}</strong></td>
+        <td style="text-align:right"><strong>${fmt(x.total_impressions)}</strong></td>
+        <td></td>
+      </tr></tfoot>
+    </table>`;
+
+  $('#xNote').innerHTML = `
+    Úvodní příspěvky na X (Twitter) neměly výrazný dosah — pohybovaly se v desítkách zobrazení.
+    Poslední thread z 15. června ale dosáhl <strong>918 zobrazení</strong> na hlavním tweetu,
+    což je pro začínající účet dobrý signál. Určitě má smysl v aktivitě pokračovat
+    a sledovat, jak bude profil performovat ve zbytku roku.`;
+}
+
+/* =========================================================
+   13. DOPORUČENÍ DO ZBYTKU ROKU
    ========================================================= */
 function renderNext(){
   const GROUPS = [

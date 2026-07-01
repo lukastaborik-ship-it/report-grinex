@@ -380,6 +380,13 @@ def main():
             data["podcast_analytics"] = json.load(fh)
         print(f"  Podcast Analytics: načteno z podcast_analytics.json")
 
+    # Merge X (Twitter) analytická data (x_analytics.json)
+    x_path = os.path.join(HERE, "x_analytics.json")
+    if os.path.exists(x_path):
+        with open(x_path, encoding="utf-8") as fh:
+            data["x_analytics"] = json.load(fh)
+        print(f"  X Analytics: načteno z x_analytics.json")
+
     out = os.path.join(HERE, "data.json")
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=1)

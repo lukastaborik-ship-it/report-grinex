@@ -15,7 +15,7 @@
   "total_published": 139,
   "total_reach_all": 175463,
   "source_file": "Grinex ContentPlan.xlsx",
-  "generated_at": "01.07.2026 16:09",
+  "generated_at": "01.07.2026 17:41",
   "data_until": "01.07.2026"
  },
  "kpis": {
@@ -10079,6 +10079,65 @@
     "likes": 10,
     "comments": 0,
     "shares": 0
+   }
+  ]
+ },
+ "x_analytics": {
+  "account": "@richard_jahoda",
+  "period": "H1 2026 — únor – červen 2026",
+  "note_start": "Účet obnoven v únoru 2026 po delší pauze.",
+  "total_impressions": 1323,
+  "total_tweets": 13,
+  "total_threads": 6,
+  "best_tweet_impressions": 918,
+  "threads": [
+   {
+    "date": "25. 2. 2026",
+    "topic": "BARVY BYZNYSU — návrat na X",
+    "impressions": 72,
+    "tweets": 2,
+    "top_tweet_impressions": 47,
+    "highlight": false
+   },
+   {
+    "date": "10. 4. 2026",
+    "topic": "#DueDiligence — prověrka firem",
+    "impressions": 105,
+    "tweets": 3,
+    "top_tweet_impressions": 59,
+    "highlight": false
+   },
+   {
+    "date": "17. 4. 2026",
+    "topic": "Seminář Endors — přeměny firem",
+    "impressions": 73,
+    "tweets": 3,
+    "top_tweet_impressions": 45,
+    "highlight": false
+   },
+   {
+    "date": "14. 5. 2026",
+    "topic": "Světový pohár paracyklistika",
+    "impressions": 70,
+    "tweets": 2,
+    "top_tweet_impressions": 44,
+    "highlight": false
+   },
+   {
+    "date": "22. 5. 2026",
+    "topic": "AI show — Edison Filmhub Prague",
+    "impressions": 37,
+    "tweets": 1,
+    "top_tweet_impressions": 37,
+    "highlight": false
+   },
+   {
+    "date": "15. 6. 2026",
+    "topic": "ČT a parasport — engagement thread",
+    "impressions": 966,
+    "tweets": 2,
+    "top_tweet_impressions": 918,
+    "highlight": true
    }
   ]
  }

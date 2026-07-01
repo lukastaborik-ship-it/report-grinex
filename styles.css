@@ -500,7 +500,15 @@ h1,h2,h3,h4 { font-family:var(--font-heading); font-weight:var(--fw-bold);
 .tbl .up   { color:var(--ob-teal-600); font-weight:var(--fw-semibold); }
 .tbl .down { color:var(--ob-tulip);    font-weight:var(--fw-semibold); }
 
-/* ===== Sekce 12: Doporučení do zbytku roku ===== */
+/* ===== Sekce 12: X (Twitter) ===== */
+.x-row--highlight td { background:rgba(0,98,255,0.04); }
+.x-badge {
+  display:inline-block; font-size:10px; font-weight:600; letter-spacing:0.04em;
+  padding:1px 7px; border-radius:20px; background:#e8f0ff; color:#0062FF;
+  vertical-align:middle; margin-left:6px;
+}
+
+/* ===== Sekce 13: Doporučení do zbytku roku ===== */
 .rec-intro { margin-bottom:24px; }
 .rec-group { margin-bottom:28px; }
 .rec-group__head {

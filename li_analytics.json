@@ -173,6 +173,182 @@
       {"file": "assets/rjml-post-3.png", "text": "#AI se řeší všude. V Grinex se na ni ale díváme jinak. Zajímá nás hlavně to, jakou skutečnou přidanou hodnotu přináší.", "views": 1083}
     ]
   },
+  "Kamila Blechová": {
+    "photo": "assets/kb-photo.jpeg",
+    "tagline": "HR & Payroll Manager v GRINEX, Daňové a Finanční poradenství.",
+    "period": "1. 1. 2026 – 30. 6. 2026",
+    "content": {
+      "views": 2825,
+      "views_change_pct": -66,
+      "members_reached": 873
+    },
+    "followers": {
+      "total": 1093,
+      "change_pct": 29
+    },
+    "engagement": {
+      "total": 57,
+      "reactions": 53,
+      "comments": 4,
+      "reshares": 0,
+      "saves": 0,
+      "sends": 0,
+      "link_clicks": 3
+    },
+    "demographics": {
+      "job_title": [
+        {"label": "Vlastník", "pct": 8},
+        {"label": "Výkonný ředitel", "pct": 6},
+        {"label": "Jednatel", "pct": 5},
+        {"label": "Manažer pro lidské zdroje", "pct": 4},
+        {"label": "Zakladatel", "pct": 2},
+        {"label": "Lidské zdroje", "pct": 2},
+        {"label": "Manažer projektu", "pct": 2},
+        {"label": "Finanční ředitel", "pct": 2},
+        {"label": "Lektor", "pct": 1}
+      ],
+      "location": [
+        {"label": "České Budějovice a okolí", "pct": 46},
+        {"label": "Praha – metropolitní oblast", "pct": 13},
+        {"label": "Písek", "pct": 5},
+        {"label": "Česká Kamenice", "pct": 3},
+        {"label": "Brno – metropolitní oblast", "pct": 1},
+        {"label": "Jindřichův Hradec", "pct": 1},
+        {"label": "Liberec a okolí", "pct": 1},
+        {"label": "Milevsko", "pct": 1},
+        {"label": "Blatná", "pct": 1}
+      ],
+      "seniority": [
+        {"label": "Služebně starší", "pct": 31},
+        {"label": "Nováček", "pct": 17},
+        {"label": "Ředitel", "pct": 14},
+        {"label": "Vlastník", "pct": 10},
+        {"label": "Ředitel (CEO, CFO, CTO)", "pct": 9},
+        {"label": "Manažer", "pct": 7},
+        {"label": "Viceprezident", "pct": 2},
+        {"label": "Partner", "pct": 2}
+      ],
+      "industry": [
+        {"label": "Služby pro správu lidských zdrojů", "pct": 8},
+        {"label": "Výroba motorových vozidel", "pct": 6},
+        {"label": "Nábor", "pct": 6},
+        {"label": "Obchodní poradenství a služby", "pct": 4},
+        {"label": "IT služby a IT poradenství", "pct": 4},
+        {"label": "Finanční služby", "pct": 4},
+        {"label": "Výroba strojů", "pct": 3},
+        {"label": "Účetnictví a daňové poradenství", "pct": 3},
+        {"label": "Výroba", "pct": 3},
+        {"label": "Výroba průmyslových strojů", "pct": 3}
+      ],
+      "company_size": [
+        {"label": "11–50 zaměstnanců", "pct": 14},
+        {"label": "2–10 zaměstnanců", "pct": 12},
+        {"label": "51–200 zaměstnanců", "pct": 11},
+        {"label": "1 001–5 000 zaměstnanců", "pct": 10},
+        {"label": "Více než 10 001 zaměstnanců", "pct": 9},
+        {"label": "201–500 zaměstnanců", "pct": 7},
+        {"label": "501–1 000 zaměstnanců", "pct": 7},
+        {"label": "5 001–10 000 zaměstnanců", "pct": 4},
+        {"label": "0–1 zaměstnanců", "pct": 2}
+      ]
+    },
+    "top_posts": [
+      {
+        "file": "assets/kb-post-1.png",
+        "text": "Momentálně s Grinex pro jednoho z našich klientů řešíme kompletní předělání a úpravy systémů včetně následné administrativní agendy. Předělávat systémy včetně související HR agendy na dálku nefunguje. Musíte u toho být osobně.",
+        "views": 875
+      },
+      {
+        "file": "assets/kb-post-2.png",
+        "text": "Nedávno jsme pro klienty a obchodní partnery Grinex uspořádali první akci zaměřenou na #AI ve firemní praxi. Hlavním tématem bylo, jak může umělá inteligence pomáhat v běžném pracovním dni.",
+        "views": 570
+      },
+      {
+        "file": "assets/kb-post-3.png",
+        "text": "Příprava na monitorování průběhu personálního auditu část 1. Dobrá příprava je základní kámen na cestě k dobrému výsledku. Optimalizace. Správní lidé na správných pozicích.",
+        "views": 538
+      }
+    ]
+  },
+  "Lenka Nečasová": {
+    "photo": "assets/ln-photo.jpeg",
+    "tagline": "Accounting team leader ve společnosti Grinex.",
+    "period": "1. 1. 2026 – 30. 6. 2026",
+    "content": {
+      "views": 3452,
+      "views_change_pct": 13,
+      "members_reached": 1061
+    },
+    "followers": {
+      "total": 305,
+      "change_pct": 853
+    },
+    "engagement": {
+      "total": 50,
+      "reactions": 47,
+      "comments": 3,
+      "reshares": 0,
+      "saves": 0,
+      "sends": 0,
+      "link_clicks": 0
+    },
+    "demographics": {
+      "job_title": [
+        {"label": "Účetní a daňový poradce", "pct": 17},
+        {"label": "Účetní", "pct": 16},
+        {"label": "Finanční účetní", "pct": 9},
+        {"label": "Mzdový administrativní pracovník", "pct": 4},
+        {"label": "Mzdový účetní", "pct": 2},
+        {"label": "Jednatel", "pct": 2},
+        {"label": "Daňový konzultant", "pct": 2}
+      ],
+      "location": [
+        {"label": "Praha – metropolitní oblast", "pct": 91}
+      ],
+      "seniority": [
+        {"label": "Nováček", "pct": 46},
+        {"label": "Služebně starší", "pct": 23},
+        {"label": "Ředitel", "pct": 11},
+        {"label": "Vlastník", "pct": 3},
+        {"label": "Manažer", "pct": 2},
+        {"label": "Ředitel (CEO, CFO, CTO)", "pct": 2},
+        {"label": "Partner", "pct": 2}
+      ],
+      "industry": [
+        {"label": "Účetnictví a daňové poradenství", "pct": 65},
+        {"label": "Finanční služby", "pct": 5},
+        {"label": "Obchodní poradenství a služby", "pct": 2}
+      ],
+      "company_size": [
+        {"label": "11–50 zaměstnanců", "pct": 20},
+        {"label": "51–200 zaměstnanců", "pct": 13},
+        {"label": "201–500 zaměstnanců", "pct": 8},
+        {"label": "Více než 10 001 zaměstnanců", "pct": 8},
+        {"label": "1 001–5 000 zaměstnanců", "pct": 8},
+        {"label": "2–10 zaměstnanců", "pct": 7},
+        {"label": "501–1 000 zaměstnanců", "pct": 5},
+        {"label": "0–1 zaměstnanců", "pct": 3},
+        {"label": "5 001–10 000 zaměstnanců", "pct": 3}
+      ]
+    },
+    "top_posts": [
+      {
+        "file": "assets/ln-post-1.png",
+        "text": "Covid nás naučil pracovat jinak a v Grinex jsme si tuhle svobodu nechali. I když vrcholí jarní prázdniny a termín #DPH nepočká, můžu být se svými blízkými klidně na druhé straně světa.",
+        "views": 1074
+      },
+      {
+        "file": "assets/ln-post-2.png",
+        "text": "Ne každý je na #HomeOffice 'mistr světa'. A je to tak v pořádku. Ne každý vnímá práci z domova jako největší benefit a já osobně to naprosto chápu.",
+        "views": 863
+      },
+      {
+        "file": "assets/ln-post-3.png",
+        "text": "Dnes jde můj 10letý syn na testování IQ. Ne kvůli číslu, ale kvůli pochopení jeho potenciálu. Věřím, že budoucnost patří dětem, které mají prostor růst, objevovat a být samy sebou.",
+        "views": 419
+      }
+    ]
+  },
   "Grinex (firemní)": {
     "type": "company",
     "tagline": "Firemní LinkedIn stránka · Účetnictví a daňové poradenství",

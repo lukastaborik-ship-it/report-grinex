@@ -10,6 +10,7 @@ const PERSON_COLOR = {
   'Richard Jahoda': C.teal,
   'Richard Jahoda ml.': C.koromiko,
   'Kamila Blechová': C.salmon,
+  'Lenka Nečasová': C.orchid,
   'Grinex LinkedIn': C.grape,
 };
 const MONTHS_SHORT = ['Led','Úno','Bře','Dub','Kvě','Čvn','Čvc','Srp','Zář','Říj','Lis','Pro'];
@@ -499,7 +500,7 @@ function renderProfiles(){
   if(a.type === 'company'){ renderCompanyPage(a); return; }
 
   const color = PERSON_COLOR[profTab] || C.teal;
-  const colorRgbMap = {'#5f8c94':'95,140,148','#ffb14e':'255,177,78','#fa8775':'250,135,117','#54399a':'84,57,154'};
+  const colorRgbMap = {'#5f8c94':'95,140,148','#ffb14e':'255,177,78','#fa8775':'250,135,117','#ec7ed8':'236,126,216','#54399a':'84,57,154'};
   const colorRgb = colorRgbMap[color] || '95,140,148';
 
   const netSeries = (DATA.network[profTab]?.LinkedIn?.series||[]).filter(p=>p.date>='2026-01-01');

@@ -94,8 +94,9 @@ def parse_posts(wb):
         status_counter[status or "—"] += 1
         if status != "1 - Done":
             continue
-        # datum: přednostně "DATE OF ACTUALITY", záložně "date of posting - plan"
-        d = g(r, "DATE OF ACTUALITY") or g(r, "date of posting - plan")
+        # datum: přednostně plánované datum (správně pokrývá všechny měsíce),
+        # "DATE OF ACTUALITY" jen jako záloha, pokud plánovaný datum chybí
+        d = g(r, "date of posting - plan") or g(r, "DATE OF ACTUALITY")
         imp = num(g(r, "N. IMPRESSIONS"))
         if not isinstance(d, datetime.datetime) or imp is None or imp <= 0:
             continue

@@ -361,6 +361,13 @@ def main():
             data["meta_analytics"] = json.load(fh)
         print(f"  Meta Analytics: načteno z meta_analytics.json")
 
+    # Merge YouTube analytická data (youtube_analytics.json)
+    yt_path = os.path.join(HERE, "youtube_analytics.json")
+    if os.path.exists(yt_path):
+        with open(yt_path, encoding="utf-8") as fh:
+            data["youtube_analytics"] = json.load(fh)
+        print(f"  YouTube Analytics: načteno z youtube_analytics.json")
+
     out = os.path.join(HERE, "data.json")
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=1)

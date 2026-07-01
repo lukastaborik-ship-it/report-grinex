@@ -76,7 +76,7 @@ h1,h2,h3,h4 { font-family:var(--font-heading); font-weight:var(--fw-bold);
 .nav__item:hover { background:var(--ob-ink-700); color:var(--ob-white); }
 .nav__item.is-active { background:var(--accent); color:var(--ob-white); }
 .nav__num { font-family:var(--font-heading); font-weight:var(--fw-bold); font-size:var(--fs-xs);
-  opacity:0.6; width:18px; }
+  opacity:0.6; min-width:18px; }
 .sidebar__foot { padding:var(--space-5) var(--space-5) 0; font-size:11px; color:var(--ob-gray-500);
   border-top:1px solid rgba(255,255,255,0.1); margin:0 var(--space-3); }
 

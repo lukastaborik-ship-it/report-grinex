@@ -24,7 +24,8 @@ const SECTIONS = [
   { id:'top',      icon:'6', title:'TOP příspěvky',     sub:'Nejúspěšnější příspěvky podle dosahu',     person:false },
   { id:'pipeline', icon:'7', title:'Stav obsahu',       sub:'Publikováno vs. rozpracováno',             person:false, year:false },
   { id:'profiles', icon:'8', title:'Profil ambasadora',  sub:'LinkedIn Analytics — data přímo z platformy', person:false, year:false },
-  { id:'meta',     icon:'9', title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
+  { id:'meta',     icon:'9',  title:'Meta',               sub:'Facebook a Instagram — výkon obsahu',          person:false, year:false },
+  { id:'youtube',  icon:'10', title:'YouTube',            sub:'Grinex Czech Republic — výkon kanálu',         person:false, year:false },
 ];
 
 let DATA = null;
@@ -107,7 +108,7 @@ function render(){
 
   ({ overview:renderOverview, reach:renderReach, timing:renderTiming,
      network:renderNetwork, compare:renderCompare, top:renderTop, pipeline:renderPipeline,
-     profiles:renderProfiles, meta:renderMeta })[sec.id]();
+     profiles:renderProfiles, meta:renderMeta, youtube:renderYoutube })[sec.id]();
 }
 
 const kkey = () => `${state.year}|${state.person}`;
@@ -1048,6 +1049,74 @@ function renderMeta(){
 
   // Note
   $('#metaNote').innerHTML = `💡 <strong>H1 2026 (1. 1.–29. 6. 2026)</strong>: data z Meta Business Suite. <strong>Reels táhnou FB dosah</strong> — 165 949 z 167 244 celkových zobrazení (99 %). Vše organické, žádná placená reklama. IG zobrazení klesla (−40 %), ale dosah +715 % ukazuje průnik mimo bublinu sledujících. Září a Říjen 2025: žádné příspěvky na FB ani IG.`;
+}
+
+// ---- 10. YOUTUBE ----
+function renderYoutube(){
+  const y = DATA.youtube_analytics;
+  if(!y){ $('#s-youtube').innerHTML='<div class="note">Žádná YouTube data.</div>'; return; }
+  const YT = '#FF0000';
+  const h1 = y.h1_2026;
+
+  // KPI tiles
+  $('#ytKpiGrid').innerHTML = [
+    { dark:true, label:'Zobrazení H1 2026', value:fmtK(h1.views), sub:'Leden – Červen 2026 · YouTube Studio' },
+    { label:'Čas sledování', value:h1.watch_time_hours+'h', sub:'H1 2026 · celkem' },
+    { label:'Nových odběratelů', value:'+'+h1.subscribers_gained, sub:'H1 2026 · přírůstek' },
+    { label:'Odběratelů celkem', value:fmt(y.subscribers_now), sub:'K 1. 7. 2026' },
+  ].map(t=>`<div class="kpi${t.dark?' kpi--dark':''}">
+    <div class="kpi__label">${t.label}</div>
+    <div class="kpi__value">${t.value}</div>
+    <div class="kpi__sub">${t.sub}</div>
+  </div>`).join('');
+
+  // Chart: views by month
+  mkChart('ytMonthlyChart',{
+    type:'bar',
+    data:{
+      labels: h1.monthly.map(m=>m.label),
+      datasets:[{ label:'Zobrazení', data:h1.monthly.map(m=>m.views), backgroundColor:YT+'cc', borderRadius:3 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{...tip, callbacks:{label:c=>fmt(c.parsed.y)+' zobrazení'}}},
+      scales:baseScales() }
+  });
+
+  // Top 10 videos table
+  const topSum3 = y.top_videos.slice(0,3).reduce((s,v)=>s+v.views, 0);
+  $('#ytTopTable').innerHTML = `
+    <table class="tbl">
+      <thead><tr><th>#</th><th>Video</th><th>Datum</th><th>Zobrazení</th><th>Prům. délka</th><th>% zhlédnutí</th></tr></thead>
+      <tbody>${y.top_videos.map((v,i)=>`
+        <tr${v.views>=10000?' style="font-weight:600"':''}>
+          <td style="opacity:.5;font-size:11px">${i+1}</td>
+          <td>${v.title}</td>
+          <td style="white-space:nowrap;opacity:.6;font-size:12px">${v.date}</td>
+          <td style="text-align:right">${fmt(v.views)}</td>
+          <td style="text-align:right;opacity:.7">${v.avg_duration}</td>
+          <td style="text-align:right;opacity:.7">${v.avg_pct} %</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+
+  // Podcast card
+  const p = y.podcast;
+  $('#ytPodcastCard').innerHTML = `
+    <div class="card__title">Podcast: ${p.name}</div>
+    <div style="display:flex;gap:2.5rem;margin-top:1rem;flex-wrap:wrap">
+      <div>
+        <div class="kpi__value" style="font-size:1.8rem">${fmt(p.views)}</div>
+        <div class="kpi__label" style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;opacity:.6">Zobrazení</div>
+      </div>
+      <div>
+        <div class="kpi__value" style="font-size:1.8rem">${p.watch_time_hours}h</div>
+        <div class="kpi__label" style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;opacity:.6">Čas sledování</div>
+      </div>
+    </div>`;
+
+  // Note
+  const spikePct = Math.round(topSum3/h1.views*100);
+  $('#ytNote').innerHTML = `💡 <strong>H1 2026 (1. 1.–30. 6. 2026)</strong>: data z YouTube Studio. <strong>Švarcsystém spike v březnu</strong> — 3 videa z 19. 3. 2026 přinesla ${fmtK(topSum3)} zobrazení (${spikePct} % celého H1). Podcast BARVY BYZNYSU: ${fmt(p.views)} zobrazení, ${p.watch_time_hours} h čas sledování. Měsíční rozpad je odhadovaný ze struktury top videí — přesná data z YouTube Studia jsou k dispozici v exportu.`;
 }
 
 // ---- SSI CARD ----

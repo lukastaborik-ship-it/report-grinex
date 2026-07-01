@@ -1,0 +1,37 @@
+{
+  "period": "1. 1. 2026 – 30. 6. 2026",
+  "channel": "Grinex Czech Republic",
+  "subscribers_now": 35,
+  "h1_2026": {
+    "period": "1. 1. 2026 – 30. 6. 2026",
+    "views": 38105,
+    "watch_time_hours": 136.0,
+    "subscribers_gained": 30,
+    "monthly": [
+      { "month": "2026-01", "label": "Led '26", "views": 50 },
+      { "month": "2026-02", "label": "Úno '26", "views": 2600 },
+      { "month": "2026-03", "label": "Bře '26", "views": 28500 },
+      { "month": "2026-04", "label": "Dub '26", "views": 2500 },
+      { "month": "2026-05", "label": "Kvě '26", "views": 1000 },
+      { "month": "2026-06", "label": "Čvn '26", "views": 3455 }
+    ],
+    "note": "Všechna data z YouTube Studio. Spike v březnu 2026 — virální švarcsystém content. Měsíční data jsou odhad ze struktury top videí."
+  },
+  "podcast": {
+    "name": "BARVY BYZNYSU",
+    "views": 546,
+    "watch_time_hours": 58.2
+  },
+  "top_videos": [
+    { "title": "Nový díl podcastu BARVY BYZNYSU | ŠVARCSYSTÉM #GRINEX", "date": "19. 3. 2026", "views": 17541, "avg_duration": "0:14", "avg_pct": 123.9 },
+    { "title": "Co je to ŠVARCSYSTÉM? 😐", "date": "19. 3. 2026", "views": 4500, "avg_duration": "0:15", "avg_pct": 100.1 },
+    { "title": "ŠVARCSYSTÉM | Víte, jak opravdu funguje? 🤔", "date": "19. 3. 2026", "views": 3885, "avg_duration": "0:15", "avg_pct": 95.1 },
+    { "title": "Druhá epizoda BARVY BYZNYSU je online ‼️", "date": "4. 3. 2026", "views": 1304, "avg_duration": "0:12", "avg_pct": 81.2 },
+    { "title": "První epizoda #BARVYBYZNYSU", "date": "25. 2. 2026", "views": 1291, "avg_duration": "0:11", "avg_pct": 61.8 },
+    { "title": "Pokračujeme s tématem ESOP! 📝", "date": "2. 3. 2026", "views": 1106, "avg_duration": "0:10", "avg_pct": 57.1 },
+    { "title": "První díl #BARVYBYZNYSU je tady!", "date": "25. 2. 2026", "views": 1103, "avg_duration": "0:15", "avg_pct": 95.9 },
+    { "title": "Jak fungovaly daňové ráje v divokých devadesátkách a co je dnes jinak? 😎", "date": "15. 6. 2026", "views": 1046, "avg_duration": "0:18", "avg_pct": 57.6 },
+    { "title": "Jakou ekonomiku neumí mezinárodní systém danit naplno? A kdo za to mů…", "date": "15. 6. 2026", "views": 985, "avg_duration": "0:24", "avg_pct": 72.8 },
+    { "title": "Přestěhovat byznys do Dubaje a neplatit daně? 😎🤔", "date": "15. 6. 2026", "views": 972, "avg_duration": "0:19", "avg_pct": 50.1 }
+  ]
+}

@@ -227,6 +227,16 @@
           "relationships": 25.0,
           "industry_top_pct": 5,
           "network_top_pct": 11
+        },
+        {
+          "date": "1. 7. 2026",
+          "score": 48,
+          "brand": 10.67,
+          "find": 6.3,
+          "engage": 5.85,
+          "relationships": 25.0,
+          "industry_top_pct": 8,
+          "network_top_pct": 15
         }
       ]
     }
@@ -348,6 +358,16 @@
           "relationships": 22.657,
           "industry_top_pct": 13,
           "network_top_pct": 23
+        },
+        {
+          "date": "1. 7. 2026",
+          "score": 49,
+          "brand": 10.25,
+          "find": 5.72,
+          "engage": 9.3,
+          "relationships": 23.95,
+          "industry_top_pct": 6,
+          "network_top_pct": 11
         }
       ]
     }
@@ -451,6 +471,16 @@
           "relationships": 2.85,
           "industry_top_pct": 36,
           "network_top_pct": 25
+        },
+        {
+          "date": "1. 7. 2026",
+          "score": 26,
+          "brand": 12.125,
+          "find": 6.8,
+          "engage": 2.1,
+          "relationships": 4.61,
+          "industry_top_pct": 56,
+          "network_top_pct": 27
         }
       ]
     }

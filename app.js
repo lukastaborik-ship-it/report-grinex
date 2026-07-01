@@ -253,7 +253,6 @@ function renderReach(){
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}, tooltip:{...tip,callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
       scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,grid:{color:C.grid},border:{display:false},ticks:{callback:v=>fmtK(v)}} } }});
 
-  const yrs = DATA.meta.years;
   const ambassadors = ['Richard Jahoda', 'Richard Jahoda ml.', 'Kamila Blechová', 'Lenka Nečasová'];
   const ambColors   = [C.teal, C.koromiko, C.salmon, C.orchid];
   // Only show datasets that have data

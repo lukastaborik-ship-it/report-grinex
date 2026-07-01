@@ -597,6 +597,8 @@ function renderProfiles(){
       </div>
     </div>
 
+    ${buildSsiCard(a, color, colorRgb)}
+
     <div class="grid grid--2 section-gap">
       <div class="card">
         <div class="card__head">
@@ -832,6 +834,108 @@ function renderCompanyPage(a){
           y:{grid:{color:C.grid}, border:{display:false}, ticks:{callback:v=>fmtK(v)}} } }
     });
   }
+}
+
+// ---- SSI CARD ----
+function buildSsiCard(a, color, colorRgb){
+  if(!a.ssi?.snapshots?.length) return '';
+  const snaps  = a.ssi.snapshots;
+  const latest = snaps[snaps.length - 1];
+  const prev   = snaps.length > 1 ? snaps[0] : null;
+  const cir    = 2 * Math.PI * 34;
+  const dashV  = cir * latest.score / 100;
+  const dash   = dashV.toFixed(2);
+  const gap    = (cir - dashV).toFixed(2);
+  const comps  = [
+    { label:'Budování značky',  key:'brand',         col:'#e85d4a' },
+    { label:'Hledání kontaktů', key:'find',          col:'#9b59b6' },
+    { label:'Zapojení',         key:'engage',        col:'#1a7a7a' },
+    { label:'Budování vztahů',  key:'relationships', col:'#2980b9' },
+  ];
+  const bars = comps.map(c => {
+    const val = latest[c.key];
+    const pv  = prev ? prev[c.key] : null;
+    const td  = pv != null ? val - pv : null;
+    const tdHtml = td != null
+      ? `<span style="color:${td>=0?'#27ae60':'#e74c3c'};font-size:10px;margin-left:6px">${td>=0?'▲':'▼'} ${Math.abs(td).toFixed(2)}</span>`
+      : '';
+    return `
+      <div style="margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+          <span style="font-size:12px;color:#1c1f22">${c.label}</span>
+          <span style="font-family:'Montserrat';font-weight:700;font-size:13px;color:#1c1f22">${val.toFixed(2)}${tdHtml}</span>
+        </div>
+        <div style="background:#ebedee;border-radius:3px;height:8px">
+          <div style="width:${Math.min(100,Math.round(val/25*100))}%;height:8px;background:${c.col};border-radius:3px"></div>
+        </div>
+      </div>`;
+  }).join('');
+  const trendHtml = prev ? `
+    <div style="margin-top:16px;border-top:1px solid #ebedee;padding-top:14px">
+      <div style="font-family:'Montserrat';font-weight:600;font-size:11px;color:#888;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em">Vývoj</div>
+      <table style="width:100%;font-size:11px;border-collapse:collapse">
+        <thead><tr>
+          <th style="text-align:left;padding:4px 8px 6px 0;color:#888;font-family:'Montserrat'">Složka</th>
+          <th style="text-align:right;padding:4px 0 6px;color:#888;font-family:'Montserrat'">${prev.date}</th>
+          <th style="text-align:right;padding:4px 0 6px;color:#888;font-family:'Montserrat'">${latest.date}</th>
+          <th style="text-align:right;padding:4px 0 6px 8px;color:#888;font-family:'Montserrat'">Δ</th>
+        </tr></thead>
+        <tbody>
+          ${comps.map(c => {
+            const lv = latest[c.key], pv2 = prev[c.key], d = lv - pv2;
+            return `<tr style="border-top:1px solid #f0f1f2">
+              <td style="padding:5px 8px 5px 0">${c.label}</td>
+              <td style="text-align:right;padding:5px 0">${pv2.toFixed(2)}</td>
+              <td style="text-align:right;padding:5px 0;font-weight:700">${lv.toFixed(2)}</td>
+              <td style="text-align:right;padding:5px 0 5px 8px;color:${d>0?'#27ae60':d<0?'#e74c3c':'#888'};font-weight:600">${d>=0?'+':''}${d.toFixed(2)}</td>
+            </tr>`;
+          }).join('')}
+          <tr style="border-top:2px solid #ebedee">
+            <td style="padding:7px 8px 0 0;font-weight:700;font-family:'Montserrat'">SSI celkem</td>
+            <td style="text-align:right;padding:7px 0 0;font-weight:700">${prev.score}</td>
+            <td style="text-align:right;padding:7px 0 0;font-weight:700">${latest.score}</td>
+            <td style="text-align:right;padding:7px 0 0 8px;font-weight:700;color:${latest.score>=prev.score?'#27ae60':'#e74c3c'}">${latest.score>=prev.score?'+':''}${latest.score-prev.score}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>` : '';
+  return `
+    <div class="card section-gap">
+      <div class="card__head">
+        <div class="card__title">SSI Index</div>
+        <div class="card__hint">LinkedIn Sales Navigator · k ${latest.date}</div>
+      </div>
+      <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="position:relative;width:120px;height:120px">
+            <svg viewBox="0 0 80 80" width="120" height="120" style="transform:rotate(-90deg)">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#ebedee" stroke-width="8"/>
+              <circle cx="40" cy="40" r="34" fill="none" stroke="${color}" stroke-width="8"
+                stroke-dasharray="${dash} ${gap}" stroke-linecap="round"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-family:'Montserrat';font-weight:700;font-size:30px;color:#1c1f22;line-height:1">${latest.score}</div>
+              <div style="font-size:11px;color:#888;margin-top:3px">z 100</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="text-align:center;background:rgba(${colorRgb},0.08);padding:7px 10px;border-radius:8px;min-width:65px">
+              <div style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#1c1f22">Top ${latest.industry_top_pct} %</div>
+              <div style="font-size:10px;color:#888;margin-top:2px">v oboru</div>
+            </div>
+            <div style="text-align:center;background:rgba(${colorRgb},0.08);padding:7px 10px;border-radius:8px;min-width:65px">
+              <div style="font-family:'Montserrat';font-weight:700;font-size:15px;color:#1c1f22">Top ${latest.network_top_pct} %</div>
+              <div style="font-size:10px;color:#888;margin-top:2px">v síti</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:220px">
+          <div style="font-family:'Montserrat';font-weight:600;font-size:11px;color:#888;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em">Čtyři složky skóre</div>
+          ${bars}
+        </div>
+      </div>
+      ${trendHtml}
+    </div>`;
 }
 
 init();

@@ -92,7 +92,31 @@
         "text": "Paušální daň = důchodová past? Alena Schillerová se nám ve své nedávné facebookové show svěřila, že paušální daň, toto její dítě, bude využívat v roce 2026 víc než 125 tisíc živnostníků.",
         "views": 1936
       }
-    ]
+    ],
+    "ssi": {
+      "snapshots": [
+        {
+          "date": "11. 2. 2026",
+          "score": 56,
+          "brand": 13.455,
+          "find": 6.6,
+          "engage": 10.7,
+          "relationships": 25.0,
+          "industry_top_pct": 2,
+          "network_top_pct": 8
+        },
+        {
+          "date": "8. 4. 2026",
+          "score": 55,
+          "brand": 13.455,
+          "find": 6.8,
+          "engage": 9.5,
+          "relationships": 25.0,
+          "industry_top_pct": 3,
+          "network_top_pct": 10
+        }
+      ]
+    }
   },
   "Richard Jahoda ml.": {
     "photo": "assets/rjml-photo.jpeg",
@@ -171,7 +195,31 @@
       {"file": "assets/rjml-post-1.png", "text": "Proč většina firem nepoužívá výkaz #CashFlow přímou metodou? Protože je to v praxi překvapivě těžké.", "views": 2035},
       {"file": "assets/rjml-post-2.png", "text": "V Grinex se nebojíme ani nestandardních zakázek. Aktuálně pomáháme jedné švýcarské firmě z oblasti logistiky.", "views": 1253},
       {"file": "assets/rjml-post-3.png", "text": "#AI se řeší všude. V Grinex se na ni ale díváme jinak. Zajímá nás hlavně to, jakou skutečnou přidanou hodnotu přináší.", "views": 1083}
-    ]
+    ],
+    "ssi": {
+      "snapshots": [
+        {
+          "date": "11. 2. 2026",
+          "score": 52,
+          "brand": 10.67,
+          "find": 7.0,
+          "engage": 9.7,
+          "relationships": 25.0,
+          "industry_top_pct": 4,
+          "network_top_pct": 9
+        },
+        {
+          "date": "8. 4. 2026",
+          "score": 51,
+          "brand": 10.67,
+          "find": 6.5,
+          "engage": 8.4,
+          "relationships": 25.0,
+          "industry_top_pct": 5,
+          "network_top_pct": 11
+        }
+      ]
+    }
   },
   "Kamila Blechová": {
     "photo": "assets/kb-photo.jpeg",
@@ -268,7 +316,31 @@
         "text": "Příprava na monitorování průběhu personálního auditu část 1. Dobrá příprava je základní kámen na cestě k dobrému výsledku. Optimalizace. Správní lidé na správných pozicích.",
         "views": 538
       }
-    ]
+    ],
+    "ssi": {
+      "snapshots": [
+        {
+          "date": "11. 2. 2026",
+          "score": 48,
+          "brand": 10.25,
+          "find": 6.36,
+          "engage": 9.5,
+          "relationships": 22.305,
+          "industry_top_pct": 7,
+          "network_top_pct": 15
+        },
+        {
+          "date": "8. 4. 2026",
+          "score": 43,
+          "brand": 10.25,
+          "find": 4.84,
+          "engage": 5.55,
+          "relationships": 22.657,
+          "industry_top_pct": 13,
+          "network_top_pct": 23
+        }
+      ]
+    }
   },
   "Lenka Nečasová": {
     "photo": "assets/ln-photo.jpeg",
@@ -347,7 +419,31 @@
         "text": "Dnes jde můj 10letý syn na testování IQ. Ne kvůli číslu, ale kvůli pochopení jeho potenciálu. Věřím, že budoucnost patří dětem, které mají prostor růst, objevovat a být samy sebou.",
         "views": 419
       }
-    ]
+    ],
+    "ssi": {
+      "snapshots": [
+        {
+          "date": "11. 2. 2026",
+          "score": 16,
+          "brand": 9.313,
+          "find": 6.18,
+          "engage": 0.0,
+          "relationships": 0.773,
+          "industry_top_pct": 79,
+          "network_top_pct": 56
+        },
+        {
+          "date": "8. 4. 2026",
+          "score": 32,
+          "brand": 12.125,
+          "find": 6.9,
+          "engage": 10.25,
+          "relationships": 2.85,
+          "industry_top_pct": 36,
+          "network_top_pct": 25
+        }
+      ]
+    }
   },
   "Grinex (firemní)": {
     "type": "company",
